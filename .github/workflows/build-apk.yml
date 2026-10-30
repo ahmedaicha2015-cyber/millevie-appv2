@@ -1,0 +1,49 @@
+name: Build Android APK MILLEVIE
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout du code
+        uses: actions/checkout@v4
+
+      - name: Configuration de Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Configuration de Java JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: 17
+
+      - name: Configuration du SDK Android
+        uses: android-actions/setup-android@v3
+
+      - name: Installation des dépendances NPM
+        run: npm install
+
+      - name: Initialisation Capacitor Android
+        run: |
+          npx cap add android || true
+          npx cap sync android
+
+      - name: Construction de l'APK (Gradle Debug)
+        run: |
+          cd android
+          chmod +x gradlew
+          ./gradlew assembleDebug --stacktrace
+
+      - name: Sauvegarde et Téléchargement de l'APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: MILLEVIE-Benin-debug-apk
+          path: android/app/build/outputs/apk/debug/app-debug.apk
+          retention-days: 30
