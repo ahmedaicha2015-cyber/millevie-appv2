@@ -1,0 +1,16 @@
+{
+  "name": "millevie-benin",
+  "version": "2.0.0",
+  "description": "Application mobile intégrée 1000 jours Bénin",
+  "main": "www/index.html",
+  "scripts": {
+    "build": "echo Web assets ready"
+  },
+  "dependencies": {
+    "@capacitor/android": "^6.0.0",
+    "@capacitor/core": "^6.0.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^6.0.0"
+  }
+}
