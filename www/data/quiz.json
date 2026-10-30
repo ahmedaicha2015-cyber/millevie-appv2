@@ -1,0 +1,25 @@
+{
+  "version": "2026.1",
+  "quiz": [
+    {"id":"Q01","theme":"allaitement","q":"Un bébé de 3 mois a très chaud. Faut-il lui donner un biberon d'eau ?","vrai":false,"exp":"Non. Le lait maternel est composé à plus de 85% d'eau.","src":"OMS"},
+    {"id":"Q02","theme":"allaitement","q":"Le premier lait jaunâtre (colostrum) doit être jeté ?","vrai":false,"exp":"Faux ! Le colostrum est le premier vaccin naturel, riche en anticorps.","src":"OMS"},
+    {"id":"Q03","theme":"allaitement","q":"Allaitement exclusif jusqu'à 6 mois révolus ?","vrai":true,"exp":"Vrai. Sans eau ni tisane jusqu'à 6 mois.","src":"OMS"},
+    {"id":"Q04","theme":"allaitement","q":"Lait maternel conservé 24h à température ambiante au Bénin ?","vrai":false,"exp":"Faux. 4h max, 24h au frigo, 3 mois au congélateur.","src":"OMS"},
+    {"id":"Q05","theme":"allaitement","q":"Un allaitement douloureux est normal ?","vrai":false,"exp":"Faux. Douleur persistante = mauvaise position ou mastite. Consulter.","src":"UNICEF"},
+    {"id":"Q06","theme":"diversification","q":"Diversification à 4 mois ?","vrai":false,"exp":"Faux. OMS recommande 6 mois révolus.","src":"OMS"},
+    {"id":"Q07","theme":"diversification","q":"Sel et piment autorisés dès 6 mois ?","vrai":false,"exp":"Faux. Zéro piment, sel minimal (reins immatures).","src":"OMS"},
+    {"id":"Q08","theme":"diversification","q":"L'arachide entière est interdite avant 4 ans ?","vrai":true,"exp":"Vrai — risque de fausse route. Pâte lisse uniquement.","src":"OMS"},
+    {"id":"Q09","theme":"diversification","q":"L'œuf peut être introduit dès 6 mois ?","vrai":true,"exp":"Vrai. Bien cuit, jaune puis blanc.","src":"OMS"},
+    {"id":"Q10","theme":"grossesse","q":"La femme enceinte doit prendre du fer + acide folique tous les jours ?","vrai":true,"exp":"Vrai. Protocole OMS/PEV Bénin.","src":"PEV Bénin"},
+    {"id":"Q11","theme":"grossesse","q":"La femme enceinte doit manger pour deux ?","vrai":false,"exp":"Faux. +1 repas équilibré par jour, pas doublement.","src":"INFLOR"},
+    {"id":"Q12","theme":"grossesse","q":"Il faut 4 CPN minimum pendant la grossesse ?","vrai":true,"exp":"Vrai. OMS recommande 8 contacts, Bénin = 5 CPN nationales.","src":"PEV Bénin"},
+    {"id":"Q13","theme":"grossesse","q":"Le paludisme est anodin pour la femme enceinte ?","vrai":false,"exp":"Faux. Anémie sévère, fausse couche, faible poids. TPI obligatoire.","src":"PNLP Bénin"},
+    {"id":"Q14","theme":"grossesse","q":"Zéro alcool pendant la grossesse ?","vrai":true,"exp":"Vrai. Syndrome d'alcoolisation fœtale.","src":"OMS"},
+    {"id":"Q15","theme":"nutrition_enfant","q":"Un enfant de 2 ans ne doit pas boire de soda ?","vrai":true,"exp":"Vrai. Zéro soda avant 5 ans.","src":"OMS"},
+    {"id":"Q16","theme":"nutrition_enfant","q":"Le fer du poisson est mieux absorbé qu'épinards seuls ?","vrai":true,"exp":"Vrai. Ajouter du citron (vitamine C) augmente l'absorption.","src":"INFLOR"},
+    {"id":"Q17","theme":"nutrition_enfant","q":"Enfant malnutri doit être gavé ?","vrai":false,"exp":"Faux. Alimentation progressive, riche mais non forcée.","src":"UNICEF"},
+    {"id":"Q18","theme":"danger","q":"Fièvre 39°C chez un nouveau-né de 15 jours = urgence ?","vrai":true,"exp":"Vrai. Tout signe infectieux chez le nouveau-né = urgence.","src":"OMS"},
+    {"id":"Q19","theme":"danger","q":"Jaunisse jusqu'aux paumes peut attendre demain ?","vrai":false,"exp":"Faux — urgence médicale immédiate (ictère sévère).","src":"OMS"},
+    {"id":"Q20","theme":"danger","q":"Bébé qui respire >60/min = urgence ?","vrai":true,"exp":"Vrai. Signe de détresse respiratoire.","src":"OMS"}
+  ]
+}
