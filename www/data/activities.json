@@ -1,0 +1,25 @@
+{
+  "version": "2026.1",
+  "activities": [
+    {"id":"A01","ageMin":0,"ageMax":3,"type":"Lien","titre":"Peau à peau 20 min","duree":20,"materiel":"Pagne propre","description":"Bébé sur la poitrine nue de maman. Régule la température, réduit le stress et renforce le lien."},
+    {"id":"A02","ageMin":0,"ageMax":3,"type":"Langage","titre":"Parler visage contre visage","duree":10,"materiel":"Aucun","description":"À 20-30 cm du visage, parlez doucement. Bébé reconnaît la voix de maman dès la naissance."},
+    {"id":"A03","ageMin":1,"ageMax":4,"type":"Motricité","titre":"Massage des jambes","duree":10,"materiel":"Huile végétale","description":"Masser les jambes après le bain en mouvements circulaires. Détend et favorise la circulation."},
+    {"id":"A04","ageMin":2,"ageMax":5,"type":"Écoute","titre":"Hochets et berceuses","duree":10,"materiel":"Hochet / calebasse","description":"Secouez doucement près de bébé. Chantez les berceuses traditionnelles (Fon, Yoruba)."},
+    {"id":"A05","ageMin":3,"ageMax":6,"type":"Motricité","titre":"Temps sur le ventre","duree":5,"materiel":"Natte propre","description":"3-5 min sous surveillance pour fortifier la nuque. Bébé apprend à lever la tête."},
+    {"id":"A06","ageMin":3,"ageMax":6,"type":"Motricité","titre":"Attraper le pagne","duree":5,"materiel":"Pagne coloré","description":"Présentez un coin de pagne. Bébé apprend à saisir et tirer."},
+    {"id":"A07","ageMin":4,"ageMax":8,"type":"Langage","titre":"Imiter les babillages","duree":10,"materiel":"Aucun","description":"Quand bébé fait 'ba-ba', répondez 'ba-ba'. Il apprend les tours de conversation."},
+    {"id":"A08","ageMin":4,"ageMax":8,"type":"Motricité","titre":"Rouler un ballon","duree":10,"materiel":"Ballon souple","description":"Roulez un ballon doucement. Suivi du regard et coordination œil-main."},
+    {"id":"A09","ageMin":6,"ageMax":9,"type":"Motricité","titre":"Position assise avec appui","duree":10,"materiel":"Coussins","description":"Assis entouré d'oreillers. Bébé apprend l'équilibre assis."},
+    {"id":"A10","ageMin":6,"ageMax":12,"type":"Langage","titre":"Coucou-caché","duree":10,"materiel":"Pagne","description":"Cachez votre visage et réapparaissez. Notion de permanence de l'objet."},
+    {"id":"A11","ageMin":7,"ageMax":12,"type":"Motricité","titre":"Ramper vers un objet","duree":15,"materiel":"Jouet coloré","description":"Placez un jouet à 1 m. Encourage bébé à ramper. Motricité globale."},
+    {"id":"A12","ageMin":9,"ageMax":15,"type":"Autonomie","titre":"Manger avec les doigts","duree":20,"materiel":"Banane mûre","description":"Laissez bébé prendre des morceaux tendres avec les doigts. Motricité fine + autonomie."},
+    {"id":"A13","ageMin":12,"ageMax":18,"type":"Langage","titre":"Nommer les objets","duree":10,"materiel":"Objets du quotidien","description":"Montrez une cuillère : 'cuillère !'. Répétez 3 fois. Enrichit le vocabulaire."},
+    {"id":"A14","ageMin":12,"ageMax":18,"type":"Motricité","titre":"Premiers pas appuyés","duree":15,"materiel":"Meuble stable","description":"Encouragez les pas le long d'un meuble bas. Marche avec appui."},
+    {"id":"A15","ageMin":15,"ageMax":24,"type":"Imagination","titre":"Jeu de faire semblant","duree":20,"materiel":"Poupée, cuillère","description":"Nourrir la poupée, la coucher. Jeu symbolique, base du langage."},
+    {"id":"A16","ageMin":18,"ageMax":24,"type":"Motricité","titre":"Dessiner avec le doigt","duree":15,"materiel":"Farine, plateau","description":"Tracer des traits dans la farine. Motricité fine, préparation à l'écriture."},
+    {"id":"A17","ageMin":-270,"ageMax":0,"type":"Femme enceinte","titre":"Respiration profonde","duree":10,"materiel":"Natte","description":"Assise, respiration ventrale lente 5 min matin et soir. Oxygène bébé, réduit le stress."},
+    {"id":"A18","ageMin":-270,"ageMax":0,"type":"Femme enceinte","titre":"Marche modérée","duree":30,"materiel":"Chaussures fermées","description":"20-30 min au frais (matin ou soir). Réduit diabète gestationnel et hypertension."},
+    {"id":"A19","ageMin":-270,"ageMax":0,"type":"Femme enceinte","titre":"Bascule du bassin","duree":10,"materiel":"Natte","description":"À 4 pattes, arrondir puis relâcher le dos. Soulage les lombaires."},
+    {"id":"A20","ageMin":0,"ageMax":60,"type":"Femme allaitante","titre":"Exercices de Kegel","duree":5,"materiel":"Aucun","description":"Contracter le périnée 5 sec, relâcher 5 sec, x10. 3 fois par jour. Rééducation post-partum."}
+  ]
+}
