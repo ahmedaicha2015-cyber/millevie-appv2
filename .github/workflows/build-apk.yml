@@ -24,7 +24,9 @@ jobs:
           java-version: 17
 
       - name: Configuration du SDK Android
-        uses: android-actions/setup-android@v3
+        uses: android-actions/setup-android@v4
+        with:
+          packages: 'platform-tools'
 
       - name: Installation des dépendances NPM
         run: npm install
