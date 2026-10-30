@@ -1,0 +1,9 @@
+{
+  "appId": "bj.millevie.app",
+  "appName": "MILLEVIE",
+  "webDir": "www",
+  "bundledWebRuntime": false,
+  "server": {
+    "androidScheme": "https"
+  }
+}
