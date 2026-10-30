@@ -1,0 +1,16 @@
+{
+  "short_name": "MILLEVIE",
+  "name": "MILLEVIE - 1000 Jours Bénin",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><circle cx='32' cy='32' r='32' fill='%231d5a3b'/><circle cx='32' cy='32' r='20' fill='%23e8b23c'/></svg>",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml"
+    }
+  ],
+  "start_url": "./index.html",
+  "background_color": "#1d5a3b",
+  "theme_color": "#1d5a3b",
+  "display": "standalone",
+  "orientation": "portrait"
+}
