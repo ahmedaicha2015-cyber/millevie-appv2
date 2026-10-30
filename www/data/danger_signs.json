@@ -1,0 +1,22 @@
+{
+  "femme": [
+    "Saignement vaginal abondant",
+    "Convulsions ou perte de connaissance",
+    "Maux de tête intenses avec vision trouble",
+    "Fièvre élevée (>38°C)",
+    "Douleur abdominale sévère et continue",
+    "Écoulement de liquide fétide / eaux rompues",
+    "Gonflement brutal des mains, pieds et visage",
+    "Arrêt des mouvements du bébé dans le ventre"
+  ],
+  "enfant": [
+    "Incapacité totale de téter",
+    "Vomissement systématique",
+    "Respiration très rapide (>60/min)",
+    "Tirage sous les côtes",
+    "Fièvre ou corps inhabituellement froid",
+    "Bébé tout mou, léthargique, ne réagissant plus",
+    "Ombilic rouge, purulent ou sentant mauvais",
+    "Jaunisse intense jusqu'aux paumes et plantes"
+  ]
+}
