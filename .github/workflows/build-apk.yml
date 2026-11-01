@@ -23,7 +23,7 @@ jobs:
           distribution: 'zulu'
           java-version: 17
 
-      - name: Configuration du SDK Android
+      - name: Configuration du SDK Android (CORRIGÉ)
         uses: android-actions/setup-android@v4
         with:
           packages: 'platform-tools'
