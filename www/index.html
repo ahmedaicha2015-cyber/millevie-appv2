@@ -1736,15 +1736,30 @@ function viewHelp(){
    BOOT
    ============================================================ */
 async function boot(){
+  // Charge les 4 fichiers de recettes en parallèle
   try {
-    const resp = await fetch('data/recipes.json');
-    if(!resp.ok) throw new Error('HTTP ' + resp.status);
-    const data = await resp.json();
-    if(!data.recipes || !Array.isArray(data.recipes)){
-      throw new Error('Format invalide');
+    const fichiers = [
+      'data/recipes_1.json',
+      'data/recipes_2.json',
+      'data/recipes_3.json',
+      'data/recipes_4.json'
+    ];
+    let toutes = [];
+    for(const f of fichiers){
+      try {
+        const resp = await fetch(f);
+        if(!resp.ok) throw new Error(f + ' HTTP ' + resp.status);
+        const data = await resp.json();
+        if(!Array.isArray(data)) throw new Error(f + ' pas un tableau');
+        toutes = toutes.concat(data);
+        console.log('✓ ' + f + ' : ' + data.length + ' recettes');
+      } catch(e){
+        console.warn('✗ ' + f + ' :', e.message);
+      }
     }
-    RECIPES_DB = data.format === 'compact-v1' ? expandRecipes(data.recipes) : data.recipes;
-    if(RECIPES_DB.length === 0) throw new Error('Aucune recette');
+    RECIPES_DB = expandRecipes(toutes);
+    if(RECIPES_DB.length === 0) throw new Error('Aucune recette chargée');
+    console.log('✓ TOTAL : ' + RECIPES_DB.length + ' recettes');
   } catch(e){
     console.error('Erreur recipes:', e);
     DATA_ERROR = e.message;
