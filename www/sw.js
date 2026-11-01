@@ -1,9 +1,10 @@
 const CACHE_NAME = 'millevie-cache-v2026-3';
 const ASSETS = [
-  './',
-  './index.html',
-  './manifest.json',
-  './data/recipes.json',
+  './', './index.html', './manifest.json',
+  './data/recipes_1.json',
+  './data/recipes_2.json',
+  './data/recipes_3.json',
+  './data/recipes_4.json',
   './data/who_growth.json',
   './data/activities.json',
   './data/quiz.json',
