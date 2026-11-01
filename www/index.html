@@ -3,152 +3,591 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
-<title>MILLEVIE – 1000 jours Bénin</title>
+<title>MILLEVIE — 1000 jours Bénin</title>
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#1d5a3b">
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#f6f8f5;--sf:#fff;--tx:#17241d;--mu:#57685e;--gr:#1d5a3b;--gl:#dcece2;--go:#e8b23c;--gd:#fcf4e3;--rd:#b83624;--rl:#fce8e5;--bd:#d6ded8;--safe-top:env(safe-area-inset-top,0px);--safe-bot:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#111a14;--sf:#19261e;--tx:#e6ede8;--mu:#93a69a;--gr:#67cf95;--gl:#21382a;--go:#e8b23c;--gd:#382f14;--rd:#ff8570;--rl:#401f1a;--bd:#2b3b30}}
-:root[data-theme="dark"]{--bg:#111a14;--sf:#19261e;--tx:#e6ede8;--mu:#93a69a;--gr:#67cf95;--gl:#21382a;--go:#e8b23c;--gd:#382f14;--rd:#ff8570;--rl:#401f1a;--bd:#2b3b30}
+/* ============ DESIGN SYSTEM ============ */
+:root{
+  --vert:#1d5a3b; --vert-clair:#2b7850; --vert-pale:#dcece2;
+  --ocre:#e8b23c; --ocre-pale:#fcf4e3; --ocre-fonce:#b8860b;
+  --terra:#b83624; --terra-pale:#fce8e5;
+  --creme:#faf7f0; --blanc:#ffffff;
+  --txt:#17241d; --txt-mu:#6b7a70; --bord:#e0e6e1;
+  --ombre-sm:0 1px 3px rgba(23,36,29,.06);
+  --ombre:0 4px 12px rgba(23,36,29,.08);
+  --ombre-lg:0 12px 32px rgba(23,36,29,.12);
+  --r-sm:10px; --r:16px; --r-lg:22px;
+  --safe-top:env(safe-area-inset-top,0px);
+  --safe-bot:env(safe-area-inset-bottom,0px);
+}
+@media(prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --creme:#0f1a13; --blanc:#1a2721; --txt:#eaf1ec; --txt-mu:#9bb0a3;
+    --bord:#2a3a30; --vert-pale:#21382a; --ocre-pale:#382f14; --terra-pale:#401f1a;
+    --ombre-sm:0 1px 3px rgba(0,0,0,.3);
+    --ombre:0 4px 12px rgba(0,0,0,.4);
+    --ombre-lg:0 12px 32px rgba(0,0,0,.5);
+  }
+}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 Nunito,system-ui,sans-serif;padding-top:var(--safe-top);padding-bottom:calc(85px + var(--safe-bot))}
-header{background:var(--sf);border-bottom:1px solid var(--bd);padding:12px 18px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}
-.logo-box{display:flex;align-items:center;gap:10px}
-h1{font-size:22px;font-weight:800;margin:0;color:var(--gr);line-height:1}
-header small{display:block;font-size:12px;color:var(--mu);font-weight:600}
-main{max-width:680px;margin:auto;padding:12px 14px}
-h2{font-size:20px;font-weight:800;margin:16px 0 8px;color:var(--gr)}
-h3{font-size:16px;font-weight:700;margin:0 0 6px}
-.c{background:var(--sf);border:1px solid var(--bd);border-radius:16px;padding:15px;margin:12px 0;box-shadow:0 2px 5px rgba(0,0,0,.02)}
-.hero{background:linear-gradient(135deg,#1d5a3b,#2b7850);color:#fff;border:none}
-.hero h2,.hero small,.hero .big{color:#fff}
-.hero .big{font-size:32px;font-weight:800;line-height:1.1;margin:6px 0}
-.warn{background:var(--gd);border-color:var(--go)}
-.alert{background:var(--rl);border-color:var(--rd);color:var(--rd);font-weight:600}
-.ok{background:var(--gl);border-color:var(--gr);color:var(--gr);font-weight:600}
-.mu{color:var(--mu);font-size:13px;line-height:1.4}
-.tag{display:inline-flex;align-items:center;font-size:12px;padding:2px 9px;border-radius:99px;background:var(--gl);color:var(--gr);font-weight:700;margin:2px 4px 2px 0}
-.tag.r{background:var(--rl);color:var(--rd)}
-.tag.y{background:var(--gd);color:#8f6500}
-button,.b{font:inherit;font-weight:700;border:1px solid var(--gr);background:var(--gr);color:#fff;border-radius:12px;padding:10px 16px;min-height:46px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px}
-button.o,.b.o{background:transparent;color:var(--gr)}
-button.d,.b.d{background:var(--rd);border-color:var(--rd);color:#fff}
-button.s,.b.s{min-height:36px;padding:5px 11px;font-size:13px;border-radius:8px}
-input,select,textarea{font:inherit;width:100%;padding:10px;border:1px solid var(--bd);border-radius:12px;background:var(--sf);color:var(--tx);min-height:46px;margin:5px 0 10px}
-label{font-weight:700;font-size:14px;display:block;margin-top:8px}
-.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-.row>*{flex:1}
-.chips{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
-.chip{width:auto;flex:none;background:var(--sf);color:var(--tx);border:1px solid var(--bd);min-height:38px;border-radius:10px;padding:4px 12px;font-size:14px}
-.chip.on{background:var(--gl);border-color:var(--gr);color:var(--gr);font-weight:700}
-nav{position:fixed;left:0;right:0;bottom:0;background:var(--sf);border-top:1px solid var(--bd);display:flex;padding-bottom:var(--safe-bot);z-index:20;box-shadow:0 -2px 10px rgba(0,0,0,.03)}
-nav button{flex:1;background:none;border:0;color:var(--mu);border-radius:0;font-size:11px;padding:8px 2px 6px;display:flex;flex-direction:column;align-items:center;gap:2px;min-height:56px}
-nav button span{font-size:22px;line-height:1}
-nav button.on{color:var(--gr);font-weight:800}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:14px 0}
-.tile{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;background:var(--sf);color:var(--tx);border:1px solid var(--bd);border-radius:16px;padding:14px 6px;font-size:14px;min-height:92px;font-weight:700}
-.tile span{font-size:32px;line-height:1}
-.tts-btn{background:none;border:none;padding:4px;font-size:22px;color:var(--gr);line-height:1;min-height:auto}
-table{width:100%;border-collapse:collapse;font-size:13px}
-th,td{padding:7px 5px;border-bottom:1px solid var(--bd);text-align:left}
-.scroll{overflow-x:auto}
-svg{max-width:100%}
-.slot{border-left:4px solid var(--go)}
-.slot.matin{border-color:#e8b23c}
-.slot.midi{border-color:#1d5a3b}
-.slot.soir{border-color:#b83624}
+html,body{margin:0;padding:0}
+body{
+  background:var(--creme); color:var(--txt);
+  font:16px/1.55 Nunito,system-ui,-apple-system,sans-serif;
+  padding-top:var(--safe-top);
+  padding-bottom:calc(90px + var(--safe-bot));
+  overflow-x:hidden;
+}
+
+/* ============ ANIMATIONS ============ */
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes slideDown{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+@keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+@keyframes bounceIn{0%{transform:scale(.9);opacity:0}60%{transform:scale(1.03);opacity:1}100%{transform:scale(1)}}
+.anim-fade{animation:fadeIn .3s ease both}
+.anim-up{animation:slideUp .35s ease both}
+.anim-down{animation:slideDown .35s ease both}
+.anim-bounce{animation:bounceIn .4s ease both}
+
+/* ============ HEADER ============ */
+.app-header{
+  position:sticky;top:0;z-index:100;
+  background:linear-gradient(135deg,var(--vert) 0%,var(--vert-clair) 100%);
+  color:#fff;
+  padding:14px 18px;
+  padding-top:calc(14px + var(--safe-top));
+  display:flex;align-items:center;justify-content:space-between;
+  box-shadow:0 2px 16px rgba(0,0,0,.15);
+}
+.header-left{display:flex;align-items:center;gap:12px}
+.logo-svg{width:42px;height:42px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.2))}
+.header-titles h1{
+  font-size:20px;font-weight:900;margin:0;line-height:1.1;
+  letter-spacing:.5px;
+}
+.header-titles small{
+  display:block;font-size:11px;opacity:.85;font-weight:600;
+  margin-top:2px;letter-spacing:.3px;
+}
+.header-right{display:flex;align-items:center;gap:10px}
+.avatar-btn{
+  width:44px;height:44px;border-radius:50%;
+  background:var(--ocre); border:2px solid rgba(255,255,255,.3);
+  cursor:pointer; padding:0; display:flex;align-items:center;justify-content:center;
+  transition:transform .2s;box-shadow:0 2px 8px rgba(0,0,0,.2);
+}
+.avatar-btn:active{transform:scale(.92)}
+.avatar-btn svg{width:38px;height:38px}
+.menu-btn{
+  background:rgba(255,255,255,.15);border:none;color:#fff;
+  width:38px;height:38px;border-radius:10px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;min-height:auto;padding:0;
+}
+.menu-btn:active{background:rgba(255,255,255,.3)}
+
+/* Menu déroulant header */
+.dropdown{
+  position:absolute;top:calc(100% + 8px);right:18px;
+  background:var(--blanc);border-radius:var(--r);box-shadow:var(--ombre-lg);
+  min-width:220px;overflow:hidden;z-index:200;display:none;
+  border:1px solid var(--bord);
+}
+.dropdown.open{display:block;animation:slideDown .2s ease}
+.dropdown button{
+  display:flex;align-items:center;gap:12px;width:100%;
+  background:none;border:none;color:var(--txt);
+  padding:14px 18px;text-align:left;font-weight:600;font-size:15px;
+  cursor:pointer;min-height:auto;border-radius:0;
+}
+.dropdown button:not(:last-child){border-bottom:1px solid var(--bord)}
+.dropdown button:hover,.dropdown button:active{background:var(--vert-pale)}
+
+/* ============ MAIN ============ */
+main{max-width:720px;margin:auto;padding:16px 16px 24px}
+
+/* ============ BOUTON RETOUR ============ */
+.back-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--blanc);border:1.5px solid var(--bord);
+  color:var(--vert);font-weight:800;font-size:14px;
+  padding:10px 16px;border-radius:var(--r-sm);
+  cursor:pointer;margin-bottom:14px;min-height:auto;
+  box-shadow:var(--ombre-sm);
+}
+.back-btn:active{transform:scale(.97);background:var(--vert-pale)}
+
+/* ============ TYPOGRAPHIE ============ */
+h2{
+  font-size:24px;font-weight:900;margin:20px 0 14px;color:var(--vert);
+  letter-spacing:-.3px;
+}
+h3{font-size:17px;font-weight:800;margin:0 0 8px;color:var(--txt)}
+.mu{color:var(--txt-mu);font-size:13.5px;line-height:1.5}
+.lead{font-size:15px;color:var(--txt-mu);margin:6px 0 16px}
+
+/* ============ CARDS ============ */
+.card{
+  background:var(--blanc);border-radius:var(--r);
+  padding:18px;margin:14px 0;box-shadow:var(--ombre);
+  border:1px solid var(--bord);animation:slideUp .35s ease both;
+}
+.card-hero{
+  background:linear-gradient(135deg,var(--vert) 0%,var(--vert-clair) 100%);
+  color:#fff;border:none;box-shadow:var(--ombre-lg);position:relative;overflow:hidden;
+}
+.card-hero::before{
+  content:"";position:absolute;top:-50%;right:-20%;
+  width:180px;height:180px;border-radius:50%;
+  background:rgba(255,255,255,.06);
+}
+.card-hero .big{
+  font-size:48px;font-weight:900;line-height:1;margin:8px 0;
+  letter-spacing:-1.5px;
+}
+.card-hero small{color:rgba(255,255,255,.85);font-weight:600;letter-spacing:.3px}
+
+.card.warn{
+  background:var(--ocre-pale);border-color:var(--ocre);
+  border-left:5px solid var(--ocre);
+}
+.card.alert{
+  background:var(--terra-pale);border-color:var(--terra);
+  border-left:5px solid var(--terra);
+}
+.card.ok{
+  background:var(--vert-pale);border-color:var(--vert);
+  border-left:5px solid var(--vert);
+}
+
+/* ============ TAGS / BADGES ============ */
+.tag{
+  display:inline-flex;align-items:center;gap:4px;
+  font-size:12.5px;font-weight:700;
+  padding:5px 11px;border-radius:99px;
+  background:var(--vert-pale);color:var(--vert);
+  margin:3px 5px 3px 0;
+}
+.tag.y{background:var(--ocre-pale);color:var(--ocre-fonce)}
+.tag.r{background:var(--terra-pale);color:var(--terra)}
+.tag.big{font-size:14px;padding:7px 14px}
+
+/* ============ BOUTONS ============ */
+button,.btn{
+  font:inherit;font-weight:800;
+  border:none;background:var(--vert);color:#fff;
+  border-radius:var(--r-sm);padding:13px 20px;min-height:50px;
+  cursor:pointer;text-decoration:none;display:inline-flex;
+  align-items:center;justify-content:center;gap:8px;
+  font-size:15px;letter-spacing:.2px;
+  transition:transform .15s,box-shadow .15s;
+  box-shadow:0 2px 8px rgba(29,90,59,.25);
+}
+button:active,.btn:active{transform:scale(.97);box-shadow:0 1px 4px rgba(29,90,59,.2)}
+button.o{background:var(--blanc);color:var(--vert);border:1.5px solid var(--vert);box-shadow:var(--ombre-sm)}
+button.d{background:var(--terra);box-shadow:0 2px 8px rgba(184,54,36,.3)}
+button.g{background:var(--ocre);color:var(--vert);box-shadow:0 2px 8px rgba(232,178,60,.35)}
+button.s{min-height:40px;padding:8px 14px;font-size:13.5px;border-radius:10px}
+button.full{width:100%}
+button.ghost{background:transparent;color:var(--vert);box-shadow:none;border:1.5px dashed var(--bord)}
+button.ghost:active{background:var(--vert-pale)}
+
+/* ============ FORMULAIRES ============ */
+input,select,textarea{
+  font:inherit;width:100%;padding:12px 14px;
+  border:1.5px solid var(--bord);border-radius:var(--r-sm);
+  background:var(--blanc);color:var(--txt);min-height:48px;
+  margin:6px 0 12px;font-size:15px;
+  transition:border-color .15s;
+}
+input:focus,select:focus,textarea:focus{
+  outline:none;border-color:var(--vert);
+  box-shadow:0 0 0 3px var(--vert-pale);
+}
+label{font-weight:800;font-size:13.5px;display:block;margin-top:12px;color:var(--txt)}
+label small{font-weight:500;color:var(--txt-mu)}
+
+/* ============ ROW ============ */
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.row>*{flex:1;min-width:0}
+
+/* ============ CHIPS INGRÉDIENTS ============ */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.chip{
+  width:auto;flex:none;background:var(--blanc);color:var(--txt);
+  border:1.5px solid var(--bord);min-height:40px;border-radius:99px;
+  padding:6px 14px;font-size:13.5px;font-weight:700;
+  cursor:pointer;display:inline-flex;align-items:center;gap:6px;
+  box-shadow:var(--ombre-sm);transition:all .15s;
+}
+.chip.on{
+  background:var(--vert);color:#fff;border-color:var(--vert);
+  box-shadow:0 2px 8px rgba(29,90,59,.3);
+}
+.chip:active{transform:scale(.95)}
+
+/* ============ NAV BAS ============ */
+.bottom-nav{
+  position:fixed;left:0;right:0;bottom:0;z-index:90;
+  background:var(--blanc);border-top:1px solid var(--bord);
+  display:flex;padding-bottom:var(--safe-bot);
+  box-shadow:0 -2px 16px rgba(0,0,0,.06);
+}
+.bottom-nav button{
+  flex:1;background:none;border:none;color:var(--txt-mu);
+  border-radius:0;font-size:11px;font-weight:700;
+  padding:10px 4px 8px;display:flex;flex-direction:column;
+  align-items:center;gap:3px;min-height:60px;
+  box-shadow:none;cursor:pointer;
+}
+.bottom-nav button svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:2}
+.bottom-nav button.on{color:var(--vert)}
+.bottom-nav button.on svg{stroke-width:2.5}
+
+/* ============ GRILLE TILES ============ */
+.tiles-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:12px;margin:18px 0;
+}
+.tile{
+  display:flex;flex-direction:column;align-items:center;
+  justify-content:center;gap:10px;
+  background:var(--blanc);color:var(--txt);
+  border:1.5px solid var(--bord);border-radius:var(--r);
+  padding:18px 12px;font-size:13.5px;min-height:110px;
+  font-weight:800;cursor:pointer;text-align:center;
+  box-shadow:var(--ombre-sm);transition:all .2s;
+}
+.tile:active{transform:scale(.97);box-shadow:var(--ombre);border-color:var(--vert)}
+.tile .tile-emoji{font-size:38px;line-height:1}
+
+/* ============ SLOT MENU ============ */
+.slot-card{
+  display:flex;gap:14px;align-items:flex-start;
+  background:var(--blanc);border:1.5px solid var(--bord);
+  border-radius:var(--r);padding:16px;margin:12px 0;
+  box-shadow:var(--ombre-sm);cursor:pointer;
+  transition:transform .15s,box-shadow .15s;
+}
+.slot-card:active{transform:scale(.98)}
+.slot-card.matin{border-left:5px solid var(--ocre)}
+.slot-card.midi{border-left:5px solid var(--vert)}
+.slot-card.soir{border-left:5px solid var(--terra)}
+.slot-emoji{
+  width:68px;height:68px;flex-shrink:0;
+  background:var(--vert-pale);border-radius:var(--r-sm);
+  display:flex;align-items:center;justify-content:center;
+  font-size:38px;line-height:1;
+}
+.slot-content{flex:1;min-width:0}
+.slot-content h3{font-size:15.5px;margin:0 0 6px;line-height:1.3}
+.slot-meta{font-size:12.5px;color:var(--txt-mu);margin-bottom:6px}
+
+/* ============ RECETTE DÉTAIL ============ */
+.recipe-hero{
+  background:linear-gradient(135deg,var(--vert) 0%,var(--vert-clair) 100%);
+  color:#fff;border-radius:var(--r-lg);padding:24px;
+  margin-bottom:18px;position:relative;overflow:hidden;
+  animation:bounceIn .4s ease both;
+}
+.recipe-hero::before{
+  content:"";position:absolute;top:-40%;right:-15%;
+  width:200px;height:200px;border-radius:50%;
+  background:rgba(255,255,255,.08);
+}
+.recipe-hero h2{color:#fff;margin:0 0 8px;font-size:22px;position:relative}
+.recipe-hero .emoji-big{
+  font-size:64px;line-height:1;margin-bottom:10px;display:block;
+}
+
+.steps-list{list-style:none;padding:0;counter-reset:step}
+.steps-list li{
+  counter-increment:step;position:relative;
+  padding:14px 16px 14px 56px;margin:10px 0;
+  background:var(--blanc);border-radius:var(--r-sm);
+  border:1px solid var(--bord);line-height:1.6;
+}
+.steps-list li::before{
+  content:counter(step);
+  position:absolute;left:14px;top:14px;
+  width:30px;height:30px;border-radius:50%;
+  background:var(--vert);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:900;font-size:14px;
+}
+
+.nutrition-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:10px;margin-top:10px;
+}
+.nutrition-item{
+  background:var(--vert-pale);border-radius:var(--r-sm);
+  padding:12px;text-align:center;
+}
+.nutrition-item .val{font-size:22px;font-weight:900;color:var(--vert);line-height:1}
+.nutrition-item .lbl{font-size:11px;color:var(--txt-mu);font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-top:4px}
+
+/* ============ TOAST ============ */
+.toast-container{
+  position:fixed;bottom:calc(100px + var(--safe-bot));
+  left:50%;transform:translateX(-50%);
+  z-index:1000;pointer-events:none;
+}
+.toast{
+  background:var(--txt);color:var(--blanc);
+  padding:14px 22px;border-radius:99px;
+  font-weight:700;font-size:14px;
+  box-shadow:var(--ombre-lg);margin-top:8px;
+  animation:slideUp .3s ease both;max-width:90vw;
+  display:flex;align-items:center;gap:10px;
+}
+.toast.ok{background:var(--vert)}
+.toast.warn{background:var(--ocre);color:var(--vert)}
+.toast.err{background:var(--terra)}
+
+/* ============ MODAL CONFIRMATION ============ */
+.modal-overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,.5);
+  z-index:999;display:none;align-items:center;justify-content:center;
+  padding:20px;animation:fadeIn .2s ease;
+}
+.modal-overlay.open{display:flex}
+.modal-box{
+  background:var(--blanc);border-radius:var(--r-lg);
+  padding:24px;max-width:340px;width:100%;
+  box-shadow:var(--ombre-lg);animation:bounceIn .3s ease;
+}
+.modal-box h3{margin:0 0 10px;font-size:18px}
+.modal-box p{margin:0 0 20px;color:var(--txt-mu);font-size:14.5px;line-height:1.5}
+.modal-actions{display:flex;gap:10px}
+.modal-actions button{flex:1}
+
+/* ============ EMPTY STATE ============ */
+.empty-state{
+  text-align:center;padding:40px 20px;
+  color:var(--txt-mu);
+}
+.empty-state .emoji{font-size:56px;margin-bottom:14px;opacity:.6}
+.empty-state h3{color:var(--txt);font-size:17px;margin-bottom:8px}
+
+/* ============ LOADING ============ */
+.loading-screen{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  min-height:60vh;gap:20px;
+}
+.spinner{
+  width:56px;height:56px;border-radius:50%;
+  border:4px solid var(--vert-pale);
+  border-top-color:var(--vert);
+  animation:spin 1s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ============ FOOTER MENTION ============ */
+.app-footer{
+  text-align:center;padding:30px 20px 20px;
+  color:var(--txt-mu);font-size:12px;line-height:1.8;
+  border-top:1px solid var(--bord);margin-top:30px;
+}
+.app-footer strong{color:var(--vert);font-weight:900}
+
+/* ============ À PROPOS ============ */
+.about-section{margin-bottom:22px}
+.about-section h3{color:var(--vert);font-size:16px;margin-bottom:8px}
+.contact-card{
+  background:var(--vert-pale);border-radius:var(--r);
+  padding:18px;margin:14px 0;
+}
+.contact-card a{
+  color:var(--vert);font-weight:800;text-decoration:none;
+  display:flex;align-items:center;gap:10px;
+  padding:10px 0;font-size:15px;min-height:44px;
+}
+.contact-card a:not(:last-child){border-bottom:1px solid rgba(29,90,59,.15)}
+
+/* ============ COURBE OMS ============ */
+.chart-container{
+  background:var(--blanc);border-radius:var(--r);
+  padding:16px;margin:14px 0;border:1px solid var(--bord);
+  box-shadow:var(--ombre-sm);
+}
+.chart-legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:12px;font-size:12px;font-weight:700}
+.chart-legend span{display:flex;align-items:center;gap:6px}
+.chart-legend .dot{width:12px;height:12px;border-radius:3px}
 </style>
 </head>
 <body>
 
-<header>
-  <div class="logo-box">
-    <svg width="38" height="38" viewBox="0 0 64 64" role="img">
-      <circle cx="32" cy="32" r="31" fill="#1d5a3b"/>
-      <circle cx="32" cy="32" r="25" fill="#f6c453"/>
-      <path d="M32 50V30 M32 34C22 34 16 28 16 20c9 0 16 4 16 14z" fill="#1d5a3b" stroke="#1d5a3b" stroke-width="2"/>
-      <circle cx="32" cy="14" r="5" fill="#b43a24"/>
+<!-- HEADER -->
+<header class="app-header">
+  <div class="header-left">
+    <svg class="logo-svg" viewBox="0 0 64 64" aria-label="MILLEVIE">
+      <defs>
+        <linearGradient id="lg1" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#f6c453"/>
+          <stop offset="1" stop-color="#e8b23c"/>
+        </linearGradient>
+      </defs>
+      <circle cx="32" cy="32" r="30" fill="#f6f8f5" opacity=".15"/>
+      <circle cx="32" cy="32" r="26" fill="url(#lg1)"/>
+      <!-- Mère et enfant stylisés -->
+      <circle cx="24" cy="24" r="7" fill="#1d5a3b"/>
+      <circle cx="40" cy="30" r="5.5" fill="#1d5a3b"/>
+      <path d="M16 50 Q24 38 32 50" fill="#1d5a3b"/>
+      <path d="M34 46 Q40 38 46 46" fill="#1d5a3b"/>
+      <circle cx="32" cy="15" r="3.5" fill="#b43a24"/>
     </svg>
-    <div>
+    <div class="header-titles">
       <h1>MILLEVIE</h1>
-      <small id="app-slogan">Bien nourrir aujourd'hui, mieux grandir demain.</small>
+      <small>1000 jours pour bien grandir</small>
     </div>
   </div>
-  <div class="header-actions">
-    <select id="lang-sel" style="width:auto;min-height:36px;padding:2px 8px;margin:0" onchange="setLang(this.value)">
-      <option value="fr">Français</option>
-      <option value="en">English</option>
-    </select>
+  <div class="header-right">
+    <button class="avatar-btn" onclick="toggleDropdown()" aria-label="Mon profil">
+      <svg viewBox="0 0 40 40">
+        <circle cx="20" cy="20" r="19" fill="rgba(255,255,255,.25)"/>
+        <circle cx="14" cy="14" r="5" fill="#1d5a3b"/>
+        <circle cx="26" cy="18" r="4" fill="#1d5a3b"/>
+        <path d="M8 32 Q14 24 20 32" fill="#1d5a3b"/>
+        <path d="M22 30 Q26 24 32 30" fill="#1d5a3b"/>
+      </svg>
+    </button>
+    <button class="menu-btn" onclick="toggleDropdown()" aria-label="Menu">⋯</button>
+  </div>
+  <div class="dropdown" id="dropdown">
+    <button onclick="setTab('profile');closeDropdown()">👤 Mon profil</button>
+    <button onclick="setTab('about');closeDropdown()">ℹ️ À propos de MILLEVIE</button>
+    <button onclick="setTab('help');closeDropdown()">❓ Aide & conseils d'usage</button>
+    <button onclick="toggleLang();closeDropdown()">🌍 Changer de langue</button>
   </div>
 </header>
 
-<main id="m"><div class="c">Chargement des données…</div></main>
-<nav id="nav"></nav>
+<main id="m">
+  <div class="loading-screen">
+    <div class="spinner"></div>
+    <p class="mu">Chargement de MILLEVIE…</p>
+  </div>
+</main>
+
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav" id="nav"></nav>
+
+<!-- TOASTS -->
+<div class="toast-container" id="toasts"></div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal" onclick="if(event.target===this)closeModal()">
+  <div class="modal-box" id="modal-content"></div>
+</div>
 
 <script>
 /* ============================================================
-   1. CONSTANTES FIXES
+   ÉTAT GLOBAL
    ============================================================ */
-const I18N = {
-  fr:{home:"Aujourd'hui",meals:"Menus",grow:"Croissance",health:"Suivi Santé",more:"Plus",
-    dangerTitle:"Signes d'alerte critiques",dangerSub:"Rendez-vous immédiatement dans un centre de santé.",
-    cookQuery:"Que puis-je cuisiner aujourd'hui ?",cookHelp:"Sélectionnez vos ingrédients disponibles :",
-    exclusiveMilk:"Moins de 6 mois : Allaitement maternel exclusif sans eau ni tisane.",
-    noDiag:"MILLEVIE est un guide éducatif et ne remplace pas un avis médical."},
-  en:{home:"Today",meals:"Menus",grow:"Growth",health:"Health Tracker",more:"More",
-    dangerTitle:"Critical Danger Signs",dangerSub:"Go immediately to the nearest health facility.",
-    cookQuery:"What can I cook today?",cookHelp:"Select your available ingredients:",
-    exclusiveMilk:"Under 6 months: Exclusive breastfeeding with no water or tea.",
-    noDiag:"MILLEVIE provides educational guidance and does not replace medical consultation."}
+const STORAGE_KEY = 'millevie_v3';
+
+let State = {
+  lang:'fr', theme:'auto',
+  mode:'', lmp:'', dob:'', conceptionDate:'',
+  name:'', childName:'', childSex:'m', commune:'Cotonou',
+  pantry:[], measurements:[], vaccineRecords:{},
+  visitRecords:{}, userCenters:[], quizAnswers:{}
 };
 
+try {
+  const s = localStorage.getItem(STORAGE_KEY);
+  if(s) State = Object.assign(State, JSON.parse(s));
+} catch(e){}
+
+function persist(){
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(State)); } catch(e){}
+}
+
+let RECIPES_DB = [];
+let WHO_DATA = null;
+let ACTIVITIES = [];
+let QUIZ_ITEMS = [];
+let DANGER_SIGNS = { femme:[], enfant:[] };
+let DATA_ERROR = null;
+
+/* ============================================================
+   CONSTANTES
+   ============================================================ */
 const BENIN_PEV_2026 = [
   {id:'v_birth',ageLabel:'Naissance',days:0,vaccines:'BCG, VPO-0, Hépatite B',note:"Dans les 24h suivant l'accouchement"},
-  {id:'v_6w',ageLabel:'6 semaines',days:42,vaccines:'Pentavalent-1, VPO-1, VPC-13-1, Rota-1',note:'Diphtérie, tétanos, coqueluche, pneumo, rotavirus'},
-  {id:'v_10w',ageLabel:'10 semaines',days:70,vaccines:'Pentavalent-2, VPO-2, VPC-13-2, Rota-2',note:'2e dose systématique'},
-  {id:'v_14w',ageLabel:'14 semaines',days:98,vaccines:'Pentavalent-3, VPO-3, VPC-13-3, VPI',note:'Polio injectable + 3e dose'},
-  {id:'v_6m',ageLabel:'Dès 6 mois',days:183,vaccines:'Vaccin antipaludique (VAP)',note:'Protocole national antipaludique'},
-  {id:'v_9m',ageLabel:'9 mois',days:274,vaccines:'RR-1, Fièvre jaune, Méningite A',note:'Protection épidémique majeure'},
-  {id:'v_15m',ageLabel:'15 mois',days:457,vaccines:'RR-2 (rappel rougeole)',note:'Rappel de consolidation'}
+  {id:'v_6w',ageLabel:'6 semaines',days:42,vaccines:'Pentavalent-1, VPO-1, VPC-13-1, Rota-1',note:'Diphtérie, tétanos, coqueluche'},
+  {id:'v_10w',ageLabel:'10 semaines',days:70,vaccines:'Pentavalent-2, VPO-2, VPC-13-2, Rota-2',note:'2e dose'},
+  {id:'v_14w',ageLabel:'14 semaines',days:98,vaccines:'Pentavalent-3, VPO-3, VPC-13-3, VPI',note:'3e dose combinée'},
+  {id:'v_6m',ageLabel:'6 mois',days:183,vaccines:'Vaccin antipaludique (VAP)',note:'Protocole national'},
+  {id:'v_9m',ageLabel:'9 mois',days:274,vaccines:'RR-1, Fièvre jaune, Méningite A',note:'Protection majeure'},
+  {id:'v_15m',ageLabel:'15 mois',days:457,vaccines:'RR-2 (rappel rougeole)',note:'Rappel'}
 ];
 
 const CPN_BENIN = [
-  {id:'cpn1',name:'CPN 1',term:'Avant 12 SA',actions:'Bilan, Td1, fer/acide folique, TPI paludisme'},
-  {id:'cpn2',name:'CPN 2',term:'24-28 SA',actions:'Croissance utérine, écho T2, Td2'},
-  {id:'cpn3',name:'CPN 3',term:'28-32 SA',actions:'Tension/protéinurie, TPI suite'},
-  {id:'cpn4',name:'CPN 4',term:'32-36 SA',actions:'Plan accouchement, transport urgence'},
-  {id:'cpn5',name:'CPN 5',term:'37-41 SA',actions:'Présentation du fœtus'}
+  {id:'cpn1',name:'CPN 1',term:'Avant 12 SA',actions:'Bilan, Td1, fer/acide folique, TPI'},
+  {id:'cpn2',name:'CPN 2',term:'24-28 SA',actions:'Croissance, écho T2, Td2'},
+  {id:'cpn3',name:'CPN 3',term:'28-32 SA',actions:'Tension, TPI suite'},
+  {id:'cpn4',name:'CPN 4',term:'32-36 SA',actions:'Plan accouchement, transport'},
+  {id:'cpn5',name:'CPN 5',term:'37-41 SA',actions:'Présentation fœtus'}
 ];
 
 const CPON_BENIN = [
-  {id:'cpon1',name:'Examen de sortie (H48)',days:2,desc:'Ictère, cordon, succion, réchauffement'},
-  {id:'cpon2',name:'Visite relais j3',days:3,desc:'Soutien allaitement à domicile'},
-  {id:'cpon3',name:'Visite j9',days:9,desc:'Poussée de croissance, cicatrisation ombilicale'},
-  {id:'cpon4',name:'Consultation j42 (6 sem)',days:42,desc:'Post-natale mère et vaccination'}
+  {id:'cpon1',name:'Examen sortie H48',days:2,desc:'Ictère, cordon, succion'},
+  {id:'cpon2',name:'Visite j3',days:3,desc:'Soutien allaitement'},
+  {id:'cpon3',name:'Visite j9',days:9,desc:'Poussée croissance'},
+  {id:'cpon4',name:'Consultation j42',days:42,desc:'Post-natale + vaccin'}
 ];
 
 const PANTRY_ITEMS = [
-  'Maïs','Niébé (haricot)','Igname','Manioc (gari)','Riz','Plantain',
-  'Arachide','Gombos frais','Feuilles de moringa','Feuilles de baobab (Lalo)',
-  'Grande morelle (Gboma)','Tomate','Oignon','Huile de palme rouge (Zomi)',
-  'Poisson fumé','Crevettes séchées','Œuf','Afitin (néré fermenté)','Wagashi',
-  'Ail','Gingembre frais','Piment rouge','Lait','Sucre','Sel','Carottes',
-  'Aubergine','Poivron','Haricots verts','Patate douce','Taro','Attiéké',
-  'Feuilles de manioc','Feuilles de patate douce','Feuilles de jute','Épinards',
-  'Sésame','Noix de coco','Banane','Mangue','Ananas','Papaye','Avocat','Citron',
-  'Moutarde','Poivre de Selim','Cannelle','Vanille','Beurre de karité','Mil',
-  'Sorgho','Fonio','Fleurs d\'hibiscus','Kinkeliba','Citronnelle','Soumbala'
+  {id:'mais',nom:'Maïs',emoji:'🌽'},
+  {id:'niebe',nom:'Niébé (haricot)',emoji:'🫘'},
+  {id:'igname',nom:'Igname',emoji:'🍠'},
+  {id:'manioc',nom:'Manioc / Gari',emoji:'🥔'},
+  {id:'riz',nom:'Riz',emoji:'🍚'},
+  {id:'plantain',nom:'Plantain',emoji:'🍌'},
+  {id:'arachide',nom:'Arachide',emoji:'🥜'},
+  {id:'gombo',nom:'Gombos',emoji:'🥬'},
+  {id:'moringa',nom:'Moringa',emoji:'🌿'},
+  {id:'baobab',nom:'Feuilles baobab',emoji:'🌱'},
+  {id:'gboma',nom:'Gboma',emoji:'🍃'},
+  {id:'tomate',nom:'Tomate',emoji:'🍅'},
+  {id:'oignon',nom:'Oignon',emoji:'🧅'},
+  {id:'huile',nom:'Huile palme rouge',emoji:'🟠'},
+  {id:'poisson',nom:'Poisson fumé',emoji:'🐟'},
+  {id:'crevettes',nom:'Crevettes séchées',emoji:'🦐'},
+  {id:'oeuf',nom:'Œuf',emoji:'🥚'},
+  {id:'afitin',nom:'Afitin (néré)',emoji:'⚫'},
+  {id:'wagashi',nom:'Wagashi',emoji:'🧀'},
+  {id:'ail',nom:'Ail',emoji:'🧄'},
+  {id:'gingembre',nom:'Gingembre',emoji:'🫚'},
+  {id:'piment',nom:'Piment',emoji:'🌶️'},
+  {id:'lait',nom:'Lait',emoji:'🥛'},
+  {id:'sucre',nom:'Sucre',emoji:'🍬'},
+  {id:'carotte',nom:'Carottes',emoji:'🥕'},
+  {id:'aubergine',nom:'Aubergine',emoji:'🍆'},
+  {id:'patate',nom:'Patate douce',emoji:'🍠'},
+  {id:'banane',nom:'Banane',emoji:'🍌'},
+  {id:'mangue',nom:'Mangue',emoji:'🥭'},
+  {id:'ananas',nom:'Ananas',emoji:'🍍'},
+  {id:'coco',nom:'Noix de coco',emoji:'🥥'},
+  {id:'avocat',nom:'Avocat',emoji:'🥑'},
+  {id:'citron',nom:'Citron',emoji:'🍋'},
+  {id:'mil',nom:'Mil / Sorgho',emoji:'🌾'},
+  {id:'sesame',nom:'Sésame',emoji:'⚪'}
 ];
 
 const DEFAULT_CENTRES = [
   {nom:"CHU-MEL (Mère-Enfant Lagune)",ville:"Cotonou",tel:"+22921312345",urgence:"Maternité & Néonatologie 24h/24"},
-  {nom:"CNHU-HKM Cotonou",ville:"Cotonou",tel:"+22921300155",urgence:"Urgences pédiatriques & adultes"},
-  {nom:"CHD Ouémé (Porto-Novo)",ville:"Porto-Novo",tel:"+22920212345",urgence:"Pôle Mère-Enfant"},
-  {nom:"CHUD Borgou (Parakou)",ville:"Parakou",tel:"+22923610123",urgence:"Pédiatrie & Maternité"},
-  {nom:"Hôpital de Zone Abomey-Calavi",ville:"Abomey-Calavi",tel:"+22921360012",urgence:"Urgences & CPN"},
-  {nom:"CHD Zou-Collines (Abomey)",ville:"Abomey",tel:"+22922512345",urgence:"Pôle Mère-Enfant"},
-  {nom:"CHD Atacora (Natitingou)",ville:"Natitingou",tel:"+22923821000",urgence:"Urgences & Maternité"}
+  {nom:"CNHU-HKM",ville:"Cotonou",tel:"+22921300155",urgence:"Urgences pédiatriques"},
+  {nom:"CHD Ouémé",ville:"Porto-Novo",tel:"+22920212345",urgence:"Pôle Mère-Enfant"},
+  {nom:"CHUD Borgou",ville:"Parakou",tel:"+22923610123",urgence:"Pédiatrie & Maternité"},
+  {nom:"Hôpital Zone Abomey-Calavi",ville:"Abomey-Calavi",tel:"+22921360012",urgence:"Urgences & CPN"},
+  {nom:"CHD Zou-Collines",ville:"Abomey",tel:"+22922512345",urgence:"Pôle Mère-Enfant"},
+  {nom:"CHD Atacora",ville:"Natitingou",tel:"+22923821000",urgence:"Urgences & Maternité"}
 ];
 
 const MENU_OBJECTIFS = {
@@ -162,90 +601,117 @@ const MENU_OBJECTIFS = {
 };
 
 const MENU_SCHEMA = {
-  matin:{part:0.30,categories:["Bouillies","Street food","Boissons"]},
-  midi:{part:0.45,categories:["Plats complets","Féculents","Sauces"]},
-  soir:{part:0.25,categories:["Soupes","Sauces","Féculents"]}
+  matin:{part:0.30,categories:["Bouillies","Street food","Boissons"],emoji:'🌅',label:'Matin'},
+  midi:{part:0.45,categories:["Plats complets","Féculents","Sauces"],emoji:'☀️',label:'Midi'},
+  soir:{part:0.25,categories:["Soupes","Sauces","Féculents"],emoji:'🌙',label:'Soir'}
 };
 
 /* ============================================================
-   2. ÉTAT + CHARGEMENT
+   HELPERS
    ============================================================ */
-let RECIPES_DB = [];
-let WHO_DATA = null;
-let ACTIVITIES = [];
-let QUIZ_ITEMS = [];
-let DANGER_SIGNS = { femme:[], enfant:[] };
+const MS_DAY = 86400000;
+const parseD = s => s ? new Date(s + 'T00:00:00') : new Date();
+const diffDays = (a,b) => Math.round((b - a) / MS_DAY);
+const addDays = (d,n) => new Date(d.getTime() + n*MS_DAY);
+const formatD = d => d.toLocaleDateString('fr-FR',{day:'numeric',month:'short',year:'numeric'});
+const todayISO = () => new Date().toISOString().split('T')[0];
 
-const STORAGE_KEY = 'millevie_v2';
-let State = {
-  lang:'fr', mode:'', lmp:'', dob:'', conceptionDate:'',
-  name:'', childName:'', childSex:'m', commune:'Cotonou',
-  pantry:['Maïs','Niébé (haricot)','Tomate','Huile de palme rouge (Zomi)','Oignon','Gingembre frais','Ail','Piment rouge'],
-  measurements:[], vaccineRecords:{}, visitRecords:{}, userCenters:[], quizAnswers:{}
-};
-try { const s = localStorage.getItem(STORAGE_KEY); if (s) State = Object.assign(State, JSON.parse(s)); } catch(e){}
-function persist(){ try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(State)); }catch(e){} }
+function toast(msg, type){
+  const container = document.getElementById('toasts');
+  const el = document.createElement('div');
+  el.className = 'toast ' + (type || '');
+  el.textContent = msg;
+  container.appendChild(el);
+  setTimeout(() => {
+    el.style.opacity = '0';
+    el.style.transition = 'opacity .3s';
+    setTimeout(() => el.remove(), 300);
+  }, 2800);
+}
 
-/* --- DÉCOMPRESSION DES 2 FORMATS DE RECETTES --- */
+function confirmAction(title, message, onConfirm, confirmLabel){
+  const modal = document.getElementById('modal');
+  document.getElementById('modal-content').innerHTML = `
+    <h3>${title}</h3>
+    <p>${message}</p>
+    <div class="modal-actions">
+      <button class="o" onclick="closeModal()">Annuler</button>
+      <button class="d" id="confirm-yes">${confirmLabel || 'Supprimer'}</button>
+    </div>
+  `;
+  modal.classList.add('open');
+  document.getElementById('confirm-yes').onclick = () => {
+    closeModal();
+    onConfirm();
+  };
+}
+
+function closeModal(){
+  document.getElementById('modal').classList.remove('open');
+}
+
+function toggleDropdown(){
+  document.getElementById('dropdown').classList.toggle('open');
+}
+function closeDropdown(){
+  document.getElementById('dropdown').classList.remove('open');
+}
+document.addEventListener('click', e => {
+  if(!e.target.closest('.header-right') && !e.target.closest('.dropdown')){
+    closeDropdown();
+  }
+});
+
+function toggleLang(){
+  State.lang = State.lang === 'fr' ? 'en' : 'fr';
+  persist();
+  toast(State.lang === 'fr' ? '🇫🇷 Français' : '🇬🇧 English', 'ok');
+  renderApp();
+}
+
+/* ============================================================
+   EXPANSION RECETTES
+   ============================================================ */
 function expandRecipes(compact){
   return compact.map(a => ({
     id: a[0], nom: a[1], categorie: a[2], tempsMin: a[3],
     ageMinMois: a[4], contexteFemme: (a[5]||'').split(','),
     nutrition: { kcal: a[6], protG: a[7], ferMg: a[8], calciumMg: a[9] },
     ingredients: typeof a[10]==='string'
-      ? a[10].split('|').map(x=>{const p=x.split(':');return{nom:p[0],qte:p[1]||''};})
-      : (a[10]||[]).map(x=>({nom:x[0],qte:x[1]||''})),
+      ? a[10].split('|').map(x => {const p = x.split(':'); return {nom:p[0],qte:p[1]||''};})
+      : (a[10]||[]).map(x => ({nom:x[0],qte:x[1]||''})),
     etapes: typeof a[11]==='string' ? a[11].split('|') : (a[11]||[]),
     securite: a[12] || '',
-    source: a[13] || ''
+    source: a[13] || '',
+    image: a[14] || null
   }));
 }
 
-async function boot(){
-  try{
-    const data = await (await fetch('data/recipes.json')).json();
-    RECIPES_DB = data.format === 'compact-v1' ? expandRecipes(data.recipes) : data.recipes;
-  }catch(e){ console.warn('recipes',e); }
-  try{ WHO_DATA = await (await fetch('data/who_growth.json')).json(); }catch(e){ console.warn('who',e); }
-  try{ ACTIVITIES = (await (await fetch('data/activities.json')).json()).activities; }catch(e){ console.warn('act',e); }
-  try{ QUIZ_ITEMS = (await (await fetch('data/quiz.json')).json()).quiz; }catch(e){ console.warn('quiz',e); }
-  try{ DANGER_SIGNS = await (await fetch('data/danger_signs.json')).json(); }catch(e){ console.warn('danger',e); }
-  document.getElementById('lang-sel').value = State.lang;
-  renderApp();
+function emojiRecette(r){
+  const map = {
+    'Bouillies':'🥣', 'Plats complets':'🍲', 'Sauces':'🥘',
+    'Soupes':'🍜', 'Féculents':'🍚', 'Street food':'🌮',
+    'Boissons':'🥤', 'Desserts':'🍮'
+  };
+  return map[r.categorie] || '🍽️';
 }
 
 /* ============================================================
-   3. UTILITAIRES
+   JOUR J0 → J1000
    ============================================================ */
-const MS_DAY = 86400000;
-const parseD = s => s ? new Date(s + 'T00:00:00') : new Date();
-const diffDays = (a,b) => Math.round((b - a) / MS_DAY);
-const addDays = (d,n) => new Date(d.getTime() + n*MS_DAY);
-const formatD = d => d.toLocaleDateString(State.lang==='en'?'en-US':'fr-FR',{day:'numeric',month:'short',year:'numeric'});
-const formatISO = d => d.toISOString().split('T')[0];
-const todayISO = () => formatISO(new Date());
-
-function speakText(txt){
-  if(!('speechSynthesis' in window)) return alert("Audio non disponible.");
-  window.speechSynthesis.cancel();
-  const u = new SpeechSynthesisUtterance(txt);
-  u.lang = State.lang==='en' ? 'en-US' : 'fr-FR';
-  u.rate = 0.9;
-  window.speechSynthesis.speak(u);
-}
-
-/* CALCUL DU JOUR COURANT (J0 → J1000) */
 function dateConception(){
   if(State.conceptionDate) return parseD(State.conceptionDate);
-  if(State.mode==='preg' && State.lmp) return addDays(parseD(State.lmp), 14);
-  if(State.mode==='child' && State.dob) return addDays(parseD(State.dob), -270);
+  if(State.mode === 'preg' && State.lmp) return addDays(parseD(State.lmp), 14);
+  if(State.mode === 'child' && State.dob) return addDays(parseD(State.dob), -270);
   return null;
 }
+
 function jourCourant(){
   const c = dateConception();
   if(!c) return -1;
   return diffDays(c, new Date());
 }
+
 function contexteJour(j){
   if(j < 0) return 'prep';
   if(j <= 90) return 'grossesse_T1';
@@ -255,138 +721,216 @@ function contexteJour(j){
   if(j <= 633) return 'enfant_9_12m';
   return 'enfant_12_24m';
 }
+
 function contexteLabel(ctx){
-  return ({prep:"Préparation",grossesse_T1:"Grossesse T1",grossesse_T2T3:"Grossesse T2-T3",
-    allaitement:"Allaitement (0-6 mois)",enfant_6_9m:"Bébé 6-9 mois",
-    enfant_9_12m:"Bébé 9-12 mois",enfant_12_24m:"Enfant 12-24 mois"})[ctx] || ctx;
+  return ({
+    prep:"Préparation à la grossesse",
+    grossesse_T1:"Grossesse · 1er trimestre",
+    grossesse_T2T3:"Grossesse · 2e et 3e trimestres",
+    allaitement:"Allaitement · 0 à 6 mois",
+    enfant_6_9m:"Bébé · 6 à 9 mois",
+    enfant_9_12m:"Bébé · 9 à 12 mois",
+    enfant_12_24m:"Enfant · 12 à 24 mois"
+  })[ctx] || ctx;
 }
 
 /* ============================================================
-   4. MOTEUR DE MENUS
+   MOTEUR MENUS
    ============================================================ */
 function partPourContexte(rec, ctx){
-  const map = {grossesse_T1:'femmeEnceinte',grossesse_T2T3:'femmeEnceinte',allaitement:'femmeAllaitante',
-    enfant_6_9m:'enfant6_9m',enfant_9_12m:'enfant9_12m',enfant_12_24m:'enfant12_24m'};
+  const map = {grossesse_T1:'femmeEnceinte',grossesse_T2T3:'femmeEnceinte',
+    allaitement:'femmeAllaitante',enfant_6_9m:'enfant6_9m',
+    enfant_9_12m:'enfant9_12m',enfant_12_24m:'enfant12_24m'};
   return (rec.part||{})[map[ctx]] || null;
 }
+
 function scoreIngredients(rec, pantry){
-  if(!rec.ingredients||!rec.ingredients.length) return 0;
-  const nom = rec.ingredients.map(i=>i.nom.toLowerCase());
-  const p = (pantry||[]).map(x=>x.toLowerCase());
-  let n = 0; nom.forEach(a=>{ if(p.some(b=>a.includes(b)||b.includes(a))) n++; });
+  if(!rec.ingredients || !rec.ingredients.length) return 0;
+  const nom = rec.ingredients.map(i => i.nom.toLowerCase());
+  const p = pantry.map(x => x.toLowerCase());
+  let n = 0;
+  nom.forEach(a => { if(p.some(b => a.includes(b) || b.includes(a))) n++; });
   return n / nom.length;
 }
+
 function recipeAgeOk(rec, ctx){
   if(ctx.startsWith('enfant')){
-    const m = ctx==='enfant_6_9m'?7 : ctx==='enfant_9_12m'?10 : 18;
+    const m = ctx === 'enfant_6_9m' ? 7 : ctx === 'enfant_9_12m' ? 10 : 18;
     return (rec.ageMinMois||0) <= m;
   }
-  return (rec.contexteFemme||[]).includes('grossesse') || (rec.contexteFemme||[]).includes('allaitement');
+  return (rec.contexteFemme||[]).includes('grossesse')
+      || (rec.contexteFemme||[]).includes('allaitement');
 }
+
 function proposeMenuJour(j){
   const ctx = contexteJour(j);
   const obj = MENU_OBJECTIFS[ctx] || MENU_OBJECTIFS.grossesse_T2T3;
   const slots = {};
-  ['matin','midi','soir'].forEach((moment,mi) => {
+  ['matin','midi','soir'].forEach((moment, mi) => {
     const sch = MENU_SCHEMA[moment];
-    const cands = RECIPES_DB.filter(r => recipeAgeOk(r,ctx))
-      .filter(r => sch.categories.includes(r.categorie) || r.categorie==='Sauces');
-    const scored = cands.map(r => ({ r, s: scoreIngredients(r, State.pantry) + (sch.categories.includes(r.categorie)?0.5:0) }))
-                        .sort((a,b)=> b.s-a.s);
+    const cands = RECIPES_DB
+      .filter(r => recipeAgeOk(r, ctx))
+      .filter(r => sch.categories.includes(r.categorie) || r.categorie === 'Sauces');
+    if(!cands.length){ slots[moment] = null; return; }
+    const scored = cands.map(r => ({
+      r,
+      s: scoreIngredients(r, State.pantry) + (sch.categories.includes(r.categorie) ? 0.5 : 0)
+    })).sort((a,b) => b.s - a.s);
     const pool = scored.slice(0, Math.max(5, Math.ceil(scored.length/3)));
-    if(!pool.length){ slots[moment]=null; return; }
     const seed = Math.abs(j*7 + mi*13) % pool.length;
     const rec = pool[seed].r;
     slots[moment] = {
-      recette:rec,
+      recette: rec,
       part: partPourContexte(rec, ctx),
       kcalCible: Math.round(obj.kcal * sch.part),
-      manquants: (rec.ingredients||[]).filter(i=>!State.pantry.some(p=>i.nom.toLowerCase().includes(p.toLowerCase()))).map(i=>i.nom)
+      manquants: (rec.ingredients||[])
+        .filter(i => !State.pantry.some(p => i.nom.toLowerCase().includes(p.toLowerCase())))
+        .map(i => i.nom)
     };
   });
   return { jour:j, contexte:ctx, objectif:obj, slots };
 }
+
 function bilanMenu(menu){
-  let k=0,p=0;
-  ['matin','midi','soir'].forEach(m=>{
+  let k = 0, p = 0;
+  ['matin','midi','soir'].forEach(m => {
     const s = menu.slots[m];
-    if(s && s.recette.nutrition){ k+=s.recette.nutrition.kcal||0; p+=s.recette.nutrition.protG||0; }
+    if(s && s.recette.nutrition){
+      k += s.recette.nutrition.kcal || 0;
+      p += s.recette.nutrition.protG || 0;
+    }
   });
   return { kcal:Math.round(k), protG:Math.round(p), cible:menu.objectif };
 }
 
 /* ============================================================
-   5. COURBE OMS (SVG)
+   COURBE OMS
    ============================================================ */
 function svgGrowthChart(sexe, mesures, ageMoisActuel){
   if(!WHO_DATA) return '<p class="mu">Données OMS non chargées.</p>';
-  const table = sexe==='f' ? WHO_DATA.girls_wfa : WHO_DATA.boys_wfa;
-  const ages = Object.keys(table).map(Number).sort((a,b)=>a-b);
-  const W=340,H=260,P={l:34,r:10,t:14,b:28};
-  const xMax=24, yMax=18;
+  const table = sexe === 'f' ? WHO_DATA.girls_wfa : WHO_DATA.boys_wfa;
+  const ages = Object.keys(table).map(Number).sort((a,b) => a-b);
+  const W = 340, H = 240, P = {l:36,r:12,t:16,b:32};
+  const xMax = 24, yMax = 18;
   const X = m => P.l + (m/xMax)*(W-P.l-P.r);
   const Y = kg => H - P.b - (kg/yMax)*(H-P.t-P.b);
-  const line = (idx,color,w) => {
-    const pts = ages.map(a=>`${X(a)},${Y(table[a][idx])}`).join(' ');
-    return `<polyline points="${pts}" fill="none" stroke="${color}" stroke-width="${w}"/>`;
+
+  const bandPath = () => {
+    const up = ages.map(a => `${X(a)},${Y(table[a][4])}`).join(' ');
+    const down = ages.slice().reverse().map(a => `${X(a)},${Y(table[a][0])}`).join(' ');
+    return `M${up} L${down} Z`;
   };
+
+  const line = (idx, color, w) => {
+    const pts = ages.map(a => `${X(a)},${Y(table[a][idx])}`).join(' ');
+    return `<polyline points="${pts}" fill="none" stroke="${color}" stroke-width="${w}" stroke-linejoin="round"/>`;
+  };
+
   let grid = '';
-  for(let i=0;i<=6;i++){ const a=i*4;
-    grid+=`<line x1="${X(a)}" y1="${P.t}" x2="${X(a)}" y2="${H-P.b}" stroke="#e5e7e2"/>`;
-    grid+=`<text x="${X(a)}" y="${H-P.b+14}" font-size="9" text-anchor="middle" fill="#57685e">${a}m</text>`;
+  for(let i=0;i<=6;i++){
+    const a = i*4;
+    grid += `<line x1="${X(a)}" y1="${P.t}" x2="${X(a)}" y2="${H-P.b}" stroke="#e0e6e1" stroke-dasharray="2,3"/>`;
+    grid += `<text x="${X(a)}" y="${H-P.b+16}" font-size="9" text-anchor="middle" fill="#6b7a70" font-weight="700">${a}m</text>`;
   }
   for(let kg=0;kg<=yMax;kg+=3){
-    grid+=`<line x1="${P.l}" y1="${Y(kg)}" x2="${W-P.r}" y2="${Y(kg)}" stroke="#e5e7e2"/>`;
-    grid+=`<text x="${P.l-4}" y="${Y(kg)+3}" font-size="9" text-anchor="end" fill="#57685e">${kg}</text>`;
+    grid += `<line x1="${P.l}" y1="${Y(kg)}" x2="${W-P.r}" y2="${Y(kg)}" stroke="#e0e6e1" stroke-dasharray="2,3"/>`;
+    grid += `<text x="${P.l-6}" y="${Y(kg)+3}" font-size="9" text-anchor="end" fill="#6b7a70" font-weight="700">${kg}</text>`;
   }
-  const pts = (mesures||[]).filter(m=>m.ageMois!=null && m.weight>0)
-    .map(m=>`<circle cx="${X(m.ageMois)}" cy="${Y(m.weight)}" r="4" fill="#b83624" stroke="#fff" stroke-width="2"/>`).join('');
-  return `<svg viewBox="0 0 ${W} ${H}" role="img" style="width:100%;height:auto">
-    ${grid}
-    ${line(0,'#b83624',1.5)} ${line(1,'#e8b23c',1.5)} ${line(2,'#1d5a3b',2.5)} ${line(3,'#e8b23c',1.5)} ${line(4,'#b83624',1.5)}
-    <text x="${P.l+6}" y="${Y(table[24][0])-4}" font-size="9" fill="#b83624">-3 SD</text>
-    <text x="${P.l+6}" y="${Y(table[24][2])-4}" font-size="9" fill="#1d5a3b" font-weight="bold">Médiane</text>
-    <text x="${P.l+6}" y="${Y(table[24][4])+10}" font-size="9" fill="#b83624">+3 SD</text>
-    ${pts}
-    ${ageMoisActuel!=null?`<line x1="${X(ageMoisActuel)}" y1="${P.t}" x2="${X(ageMoisActuel)}" y2="${H-P.b}" stroke="#1d5a3b" stroke-dasharray="3,3"/>`:''}
-  </svg>`;
+
+  const pts = (mesures||[]).filter(m => m.ageMois != null && m.weight > 0)
+    .map(m => `<circle cx="${X(m.ageMois)}" cy="${Y(m.weight)}" r="5" fill="#b83624" stroke="#fff" stroke-width="2.5"/>`).join('');
+
+  return `<div class="chart-container">
+    <svg viewBox="0 0 ${W} ${H}" role="img" style="width:100%;height:auto">
+      <defs>
+        <linearGradient id="bandGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#dcece2" stop-opacity=".6"/>
+          <stop offset="1" stop-color="#dcece2" stop-opacity=".15"/>
+        </linearGradient>
+      </defs>
+      ${grid}
+      <path d="${bandPath()}" fill="url(#bandGrad)"/>
+      ${line(0,'#b83624',1.5)}
+      ${line(1,'#e8b23c',1.5)}
+      ${line(2,'#1d5a3b',2.8)}
+      ${line(3,'#e8b23c',1.5)}
+      ${line(4,'#b83624',1.5)}
+      ${pts}
+      ${ageMoisActuel != null ? `<line x1="${X(ageMoisActuel)}" y1="${P.t}" x2="${X(ageMoisActuel)}" y2="${H-P.b}" stroke="#1d5a3b" stroke-dasharray="3,4" stroke-width="1.5"/>` : ''}
+    </svg>
+    <div class="chart-legend">
+      <span><span class="dot" style="background:#1d5a3b"></span>Médiane</span>
+      <span><span class="dot" style="background:#e8b23c"></span>±2 SD</span>
+      <span><span class="dot" style="background:#b83624"></span>±3 SD</span>
+    </div>
+  </div>`;
 }
+
 function interpPoids(sexe, ageMois, poids){
   if(!WHO_DATA) return { zone:'?', message:'Données OMS non chargées', alert:'c' };
-  const table = sexe==='f' ? WHO_DATA.girls_wfa : WHO_DATA.boys_wfa;
-  const ages = Object.keys(table).map(Number).sort((a,b)=>a-b);
+  const table = sexe === 'f' ? WHO_DATA.girls_wfa : WHO_DATA.boys_wfa;
+  const ages = Object.keys(table).map(Number).sort((a,b) => a-b);
   let ref = table[ages[0]];
-  for(const a of ages){ if(a<=ageMois) ref = table[a]; }
-  const [z3,z2,med,zp2,zp3] = ref;
-  if(poids < z3) return { zone:'très sévère', message:'Poids sous -3 SD. Risque élevé — consultez immédiatement.', alert:'alert' };
-  if(poids < z2) return { zone:'modérée', message:'Poids sous -2 SD. Croissance à surveiller.', alert:'warn' };
-  if(poids > zp3) return { zone:'élevé', message:'Poids au-dessus de +3 SD. Vérifier avec pédiatre.', alert:'warn' };
-  return { zone:'normal', message:'Poids dans les couloirs standards OMS 2006.', alert:'ok' };
+  for(const a of ages){ if(a <= ageMois) ref = table[a]; }
+  const [z3, z2, med, zp2, zp3] = ref;
+  if(poids < z3) return { zone:'très sévère', message:'⚠️ Poids sous -3 SD. Risque élevé — consultez immédiatement un soignant.', alert:'alert' };
+  if(poids < z2) return { zone:'modérée', message:'Poids sous -2 SD. Croissance à surveiller — parlez-en à la prochaine consultation.', alert:'warn' };
+  if(poids > zp3) return { zone:'élevé', message:'Poids au-dessus de +3 SD. Vérifiez avec un pédiatre.', alert:'warn' };
+  return { zone:'normal', message:'✓ Poids dans les couloirs standards OMS 2006. Continuez les bonnes pratiques.', alert:'ok' };
 }
 
 /* ============================================================
-   6. NAVIGATION
+   NAVIGATION
    ============================================================ */
 let currentView = 'today';
 let selectedRecipeId = null;
+let selectedTab = 'today';
 
-function setTab(v){ currentView=v; selectedRecipeId=null; renderApp(); window.scrollTo(0,0); }
-function setLang(l){ State.lang=l; persist(); document.getElementById('lang-sel').value=l; renderApp(); }
+const NAV_ITEMS = [
+  {id:'today', label:'Aujourd\'hui', icon:'home'},
+  {id:'cook', label:'Cuisiner', icon:'chef'},
+  {id:'grow', label:'Croissance', icon:'chart'},
+  {id:'health', label:'Santé', icon:'health'},
+  {id:'more', label:'Plus', icon:'more'}
+];
+
+function navIcon(name){
+  const icons = {
+    home:'<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>',
+    chef:'<path d="M6 13.87A4 4 0 0 1 7.41 6.41a5.5 5.5 0 0 1 9.18 0A4 4 0 0 1 18 13.87V21H6z"/><line x1="6" y1="17" x2="18" y2="17"/>',
+    chart:'<line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>',
+    health:'<path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>',
+    more:'<circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/>'
+  };
+  return `<svg viewBox="0 0 24 24">${icons[name] || icons.more}</svg>`;
+}
+
+function setTab(v){
+  currentView = v;
+  selectedRecipeId = null;
+  if(['today','cook','grow','health','more'].includes(v)) selectedTab = v;
+  renderApp();
+  window.scrollTo(0, 0);
+}
 
 function renderApp(){
-  const m = document.getElementById('m');
   const nav = document.getElementById('nav');
-  const t = I18N[State.lang] || I18N.fr;
-  if(!State.mode && currentView!=='profile' && currentView!=='more') currentView = 'profile';
+  nav.innerHTML = NAV_ITEMS.map(i => `
+    <button class="${selectedTab === i.id ? 'on' : ''}" onclick="setTab('${i.id}')">
+      ${navIcon(i.icon)}<span>${i.label}</span>
+    </button>
+  `).join('');
 
-  const items = [
-    {id:'today',icon:'🏠',label:t.home},
-    {id:'cook',icon:'🍲',label:t.meals},
-    {id:'grow',icon:'📈',label:t.grow},
-    {id:'health',icon:'💉',label:t.health},
-    {id:'more',icon:'☰',label:t.more}
-  ];
-  nav.innerHTML = items.map(i => `<button class="${currentView===i.id?'on':''}" onclick="setTab('${i.id}')"><span>${i.icon}</span>${i.label}</button>`).join('');
+  const m = document.getElementById('m');
+
+  if(DATA_ERROR && currentView === 'today'){
+    m.innerHTML = renderDataError();
+    return;
+  }
+
+  if(!State.mode && !['profile','about','help'].includes(currentView)){
+    currentView = 'profile';
+  }
 
   switch(currentView){
     case 'today': m.innerHTML = viewToday(); break;
@@ -401,365 +945,639 @@ function renderApp(){
     case 'quiz': m.innerHTML = viewQuiz(); break;
     case 'stim': m.innerHTML = viewStim(); break;
     case 'centers': m.innerHTML = viewCenters(); break;
+    case 'about': m.innerHTML = viewAbout(); break;
+    case 'help': m.innerHTML = viewHelp(); break;
     default: m.innerHTML = viewToday();
   }
 }
 
-/* ============================================================
-   7. VUES
-   ============================================================ */
+function renderDataError(){
+  return `
+    <div class="card alert">
+      <h2>⚠️ Problème de données</h2>
+      <p class="mu">Le fichier <code>recipes.json</code> est introuvable ou invalide.</p>
+      <p class="mu">Vérifiez que le fichier existe dans <code>www/data/recipes.json</code> et qu'il est bien formé (JSON valide, non tronqué).</p>
+    </div>
+    <div class="card">
+      <h3>Comment corriger</h3>
+      <ol style="line-height:1.8;font-size:14px">
+        <li>Ouvrez <code>www/data/recipes.json</code></li>
+        <li>Vérifiez qu'il commence par <code>{</code> et finit par <code>}</code></li>
+        <li>Vérifiez qu'il contient 400 recettes complètes</li>
+        <li>Rechargez l'application</li>
+      </ol>
+      <button class="full" onclick="location.reload()" style="margin-top:12px">🔄 Recharger</button>
+    </div>
+    <div class="card">
+      <h3>À propos de MILLEVIE</h3>
+      ${renderConcepteur()}
+    </div>`;
+}
 
+function renderConcepteur(){
+  return `
+    <p class="mu" style="margin:0">
+      <strong>Conçu par FANOU Sosthène</strong><br>
+      📞 +229 01 96 62 26 47<br>
+      ✉️ sosthnefanou@yahoo.fr
+    </p>`;
+}
+
+/* ============================================================
+   VUE AUJOURD'HUI
+   ============================================================ */
 function viewToday(){
   const j = jourCourant();
   if(j < 0){
-    return `<h2>Bienvenue sur MILLEVIE</h2>
-      <div class="c warn"><b>Renseignez votre profil pour afficher votre menu du jour adapté.</b>
-        <p class="mu">Vous êtes enceinte, vous préparez une grossesse ou vous avez un enfant de moins de 2 ans.</p>
-        <button onclick="setTab('profile')">Compléter mon profil</button>
+    return `
+      <div class="card-hero card anim-up">
+        <small>Bienvenue sur MILLEVIE</small>
+        <div class="big">🌱</div>
+        <h3 style="color:#fff;font-size:18px;margin:8px 0">Bien nourrir aujourd'hui<br>mieux grandir demain</h3>
+        <small>Votre compagnon pour les 1000 premiers jours</small>
+      </div>
+      <div class="card warn anim-up" style="animation-delay:.1s">
+        <h3>👋 Configurons votre profil</h3>
+        <p class="mu">Pour afficher les menus adaptés à votre situation, renseignez votre profil.</p>
+        <button class="full" onclick="setTab('profile')">Compléter mon profil</button>
+      </div>
+      <div class="card anim-up" style="animation-delay:.2s">
+        <h3>À propos de MILLEVIE</h3>
+        ${renderConcepteur()}
       </div>`;
   }
+
   const ctx = contexteJour(j);
   const menu = proposeMenuJour(j);
   const bilan = bilanMenu(menu);
-  const sa = j<=270 ? Math.floor(j/7) : null;
-  const mois = j>270 ? Math.floor((j-270)/30.4375) : null;
+  const sa = j <= 270 ? Math.floor(j/7) : null;
+  const mois = j > 270 ? Math.floor((j-270)/30.4375) : null;
 
-  const hero = j<=270
-    ? `<div class="c hero"><small>Grossesse · Jour ${j}/1000</small><div class="big">${sa} SA</div><small>${contexteLabel(ctx)}</small></div>`
-    : `<div class="c hero"><small>${State.childName||'Mon enfant'} · Jour ${j}/1000</small><div class="big">${mois} mois</div><small>${contexteLabel(ctx)}</small></div>`;
+  const hero = j <= 270
+    ? `<div class="card-hero card anim-bounce">
+        <small>Jour ${j}/1000 · Grossesse</small>
+        <div class="big">${sa} SA</div>
+        <small>${contexteLabel(ctx)}</small>
+       </div>`
+    : `<div class="card-hero card anim-bounce">
+        <small>Jour ${j}/1000 · ${State.childName || 'Mon enfant'}</small>
+        <div class="big">${mois} mois</div>
+        <small>${contexteLabel(ctx)}</small>
+       </div>`;
 
-  const renderSlot = (moment, label, icon) => {
+  const renderSlot = (moment) => {
     const s = menu.slots[moment];
-    if(!s) return `<div class="c slot ${moment}"><small class="mu">${icon} ${label} — pas de recette disponible</small></div>`;
+    const sch = MENU_SCHEMA[moment];
+    if(!s) return `<div class="slot-card ${moment}"><div class="slot-emoji">${sch.emoji}</div><div class="slot-content"><div class="mu">${sch.label}</div><h3>Aucune recette disponible</h3><p class="mu">Vérifiez les données de recettes</p></div></div>`;
     const r = s.recette;
-    return `<div class="c slot ${moment}">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start">
-        <div><small class="mu">${icon} ${label}</small><h3 style="margin:2px 0">${r.nom}</h3></div>
-        <span class="tag">${s.kcalCible} kcal</span>
-      </div>
-      <div class="mu" style="margin:4px 0">⏱ ${r.tempsMin||'?'} min · ${r.categorie||''}</div>
-      ${s.part ? `<div><span class="tag y">Part conseillée : ${s.part}</span></div>` : ''}
-      ${s.manquants.length ? `<div class="mu">À compléter : ${s.manquants.slice(0,4).join(', ')}${s.manquants.length>4?'…':''}</div>` : '<div class="tag" style="background:#d4edda;color:#155724">✓ Vous avez tout</div>'}
-      <button class="s" style="margin-top:8px" onclick="showRecipe('${r.id}')">Voir la recette →</button>
-    </div>`;
+    return `
+      <div class="slot-card ${moment}" onclick="showRecipe('${r.id}')">
+        <div class="slot-emoji">${emojiRecette(r)}</div>
+        <div class="slot-content">
+          <div class="slot-meta">${sch.emoji} ${sch.label} · ⏱ ${r.tempsMin||'?'} min</div>
+          <h3>${r.nom}</h3>
+          <div>
+            <span class="tag">${s.kcalCible} kcal</span>
+            ${s.part ? `<span class="tag y">Part : ${s.part}</span>` : ''}
+          </div>
+          ${s.manquants.length
+            ? `<div class="mu" style="margin-top:6px">🛒 À compléter : ${s.manquants.slice(0,3).join(', ')}${s.manquants.length>3?'…':''}</div>`
+            : `<div class="tag" style="background:#c8e6c9;color:#1b5e20;margin-top:6px">✓ Ingrédients complets</div>`}
+        </div>
+      </div>`;
   };
 
-  return `${hero}
-    <button class="d" style="width:100%;margin-bottom:12px" onclick="setTab('danger')">🚨 Signes de danger : quand consulter d'urgence ?</button>
-    <div class="c">
-      <h3>Objectif nutritionnel du jour</h3>
+  return `
+    ${hero}
+    <button class="d full anim-up" onclick="setTab('danger')" style="animation-delay:.05s">
+      🚨 Signes de danger — quand consulter ?
+    </button>
+    <div class="card anim-up" style="animation-delay:.1s">
+      <h3>🎯 Objectif nutritionnel du jour</h3>
       <p class="mu">Cible : ~${bilan.cible.kcal} kcal · ${bilan.cible.protG} g protéines${bilan.cible.ferMg?` · ${bilan.cible.ferMg} mg fer`:''}${bilan.cible.calciumMg?` · ${bilan.cible.calciumMg} mg calcium`:''}</p>
-      <p class="mu">Apport proposé : <b>${bilan.kcal} kcal</b> · <b>${bilan.protG} g protéines</b></p>
+      <p class="mu" style="margin-top:6px"><strong style="color:var(--vert)">Apport proposé : ${bilan.kcal} kcal · ${bilan.protG} g protéines</strong></p>
     </div>
-    ${renderSlot('matin','Matin','🌅')}
-    ${renderSlot('midi','Midi','☀️')}
-    ${renderSlot('soir','Soir','🌙')}
-    <div class="grid">
-      <button class="tile" onclick="setTab('cook')"><span>🍲</span>Que cuisiner ?</button>
-      <button class="tile" onclick="setTab('grow')"><span>📈</span>Croissance</button>
-      <button class="tile" onclick="setTab('health')"><span>💉</span>Vaccins</button>
-      <button class="tile" onclick="setTab('centers')"><span>📍</span>Centres</button>
-      <button class="tile" onclick="setTab('stim')"><span>🧸</span>Éveil</button>
-      <button class="tile" onclick="setTab('share')"><span>📤</span>Fiche soignant</button>
+    <h2>🍽️ Votre menu du jour</h2>
+    ${renderSlot('matin')}
+    ${renderSlot('midi')}
+    ${renderSlot('soir')}
+    <h2>Accès rapide</h2>
+    <div class="tiles-grid">
+      <button class="tile" onclick="setTab('cook')"><span class="tile-emoji">🍲</span>Que cuisiner ?</button>
+      <button class="tile" onclick="setTab('grow')"><span class="tile-emoji">📈</span>Croissance</button>
+      <button class="tile" onclick="setTab('health')"><span class="tile-emoji">💉</span>Vaccins</button>
+      <button class="tile" onclick="setTab('centers')"><span class="tile-emoji">📍</span>Centres</button>
+      <button class="tile" onclick="setTab('stim')"><span class="tile-emoji">🧸</span>Éveil</button>
+      <button class="tile" onclick="setTab('share')"><span class="tile-emoji">📤</span>Fiche soignant</button>
+    </div>
+    ${renderFooter()}`;
+}
+
+function renderFooter(){
+  return `
+    <div class="app-footer">
+      <strong>MILLEVIE — 1000 jours Bénin</strong><br>
+      Conçu avec ❤️ par <strong>FANOU Sosthène</strong><br>
+      📞 +229 01 96 62 26 47 · ✉️ sosthnefanou@yahoo.fr<br>
+      <span style="font-size:11px;opacity:.7">Fonctionne intégralement hors ligne · Version 3.0</span>
     </div>`;
 }
 
-function togglePantry(ing){
-  const i = State.pantry.indexOf(ing);
-  if(i<0) State.pantry.push(ing); else State.pantry.splice(i,1);
-  persist(); renderApp();
+/* ============================================================
+   VUE CUISINER
+   ============================================================ */
+function togglePantry(nom){
+  const idx = State.pantry.indexOf(nom);
+  if(idx < 0) State.pantry.push(nom);
+  else State.pantry.splice(idx, 1);
+  persist();
+  renderApp();
 }
+
 function viewCook(){
   const ctx = contexteJour(jourCourant());
   const list = RECIPES_DB
     .filter(r => recipeAgeOk(r, ctx) || !ctx.startsWith('enfant'))
     .map(r => {
-      const present = (r.ingredients||[]).filter(ing => State.pantry.includes(ing.nom));
-      const missing = (r.ingredients||[]).filter(ing => !State.pantry.includes(ing.nom));
-      return { ...r, match:present.length, missing };
+      const present = (r.ingredients||[]).filter(i => State.pantry.includes(i.nom));
+      const missing = (r.ingredients||[]).filter(i => !State.pantry.includes(i.nom));
+      return { ...r, match: present.length, missing };
     })
-    .sort((a,b)=> b.match - a.match);
+    .sort((a,b) => b.match - a.match);
 
-  return `<h2>🍲 Que puis-je cuisiner aujourd'hui ?</h2>
-    <div class="c">
-      <label>Ce que vous avez dans votre cuisine :</label>
+  return `
+    <h2>🍲 Que puis-je cuisiner ?</h2>
+    <p class="lead">Cochez ce que vous avez dans votre cuisine</p>
+    <div class="card anim-up">
       <div class="chips">
-        ${PANTRY_ITEMS.map(ing=>`<button class="chip ${State.pantry.includes(ing)?'on':''}" onclick="togglePantry('${ing.replace(/'/g,"\\'")}')">${State.pantry.includes(ing)?'✓ ':''}${ing}</button>`).join('')}
+        ${PANTRY_ITEMS.map(item => `
+          <button class="chip ${State.pantry.includes(item.nom)?'on':''}" onclick="togglePantry('${item.nom.replace(/'/g,"\\'")}')">
+            ${item.emoji} ${item.nom}
+          </button>`).join('')}
       </div>
-      <small class="mu">Appuyez pour activer/désactiver un aliment.</small>
+      ${State.pantry.length ? `<button class="ghost s full" onclick="State.pantry=[];persist();renderApp();toast('Sélection effacée','ok')" style="margin-top:10px">Effacer la sélection</button>` : ''}
     </div>
-    <h3>${list.length} recettes adaptées à votre profil</h3>
-    ${list.slice(0,40).map(r=>`
-      <div class="c" style="cursor:pointer" onclick="showRecipe('${r.id}')">
-        <div style="display:flex;justify-content:space-between;align-items:flex-start">
-          <div><h3 style="margin:0 0 4px">${r.nom}</h3>
-            <span class="tag">⏱ ${r.tempsMin||'?'} min</span>
-            <span class="tag y">${r.categorie||''}</span>
+    <h2>${list.length} recettes disponibles</h2>
+    ${list.length === 0 ? `
+      <div class="empty-state">
+        <div class="emoji">🍽️</div>
+        <h3>Aucune recette</h3>
+        <p>Ajoutez des ingrédients ou vérifiez les données</p>
+      </div>` : ''}
+    ${list.slice(0,40).map((r,i) => `
+      <div class="slot-card anim-up" style="animation-delay:${Math.min(i*0.02,0.4)}s" onclick="showRecipe('${r.id}')">
+        <div class="slot-emoji">${emojiRecette(r)}</div>
+        <div class="slot-content">
+          <h3>${r.nom}</h3>
+          <div class="slot-meta">⏱ ${r.tempsMin||'?'} min · ${r.categorie||''}</div>
+          <div>
             <span class="tag">${r.ageMinMois?`Dès ${r.ageMinMois} mois`:'Femme'}</span>
+            ${r.missing.length ? `<span class="tag y">${r.missing.length} à compléter</span>` : `<span class="tag" style="background:#c8e6c9;color:#1b5e20">✓ Complet</span>`}
           </div>
-          <span style="font-size:22px">👉</span>
         </div>
-        ${r.missing.length ? `<div class="mu" style="margin-top:6px">À compléter : ${r.missing.map(i=>i.nom).slice(0,4).join(', ')}${r.missing.length>4?'…':''}</div>` : '<div class="tag" style="background:#d4edda;color:#155724;margin-top:6px">✓ Ingrédients complets</div>'}
       </div>`).join('')}
-    ${list.length > 40 ? `<div class="c mu">Affichage des 40 meilleures propositions sur ${list.length}. Affinez votre sélection en cochant vos ingrédients.</div>` : ''}`;
+    ${list.length > 40 ? `<div class="card"><p class="mu">Affichage des 40 meilleures sur ${list.length}. Affinez votre sélection.</p></div>` : ''}
+    ${renderFooter()}`;
 }
-function showRecipe(id){ selectedRecipeId = id; currentView='recipe_detail'; renderApp(); window.scrollTo(0,0); }
+
+function showRecipe(id){
+  selectedRecipeId = id;
+  currentView = 'recipe_detail';
+  renderApp();
+  window.scrollTo(0,0);
+}
+
 function viewRecipeDetail(id){
-  const r = RECIPES_DB.find(x=>x.id===id);
+  const r = RECIPES_DB.find(x => x.id === id);
   if(!r) return viewCook();
   const ctx = contexteJour(jourCourant());
   const part = partPourContexte(r, ctx);
-  return `<button class="o s" onclick="setTab('cook')">← Retour</button>
-    <div class="c hero">
-      <div style="display:flex;justify-content:space-between;align-items:center">
-        <h3>${r.nom}</h3>
-        <button class="tts-btn" onclick="speakText('${r.nom.replace(/'/g,"\\'")}')">🔊</button>
-      </div>
-      <small>${r.categorie||''} · ⏱ ${r.tempsMin||'?'} min</small>
+
+  return `
+    <button class="back-btn" onclick="setTab('cook')">← Retour aux recettes</button>
+    <div class="recipe-hero">
+      <span class="emoji-big">${emojiRecette(r)}</span>
+      <h2>${r.nom}</h2>
+      <small>⏱ ${r.tempsMin||'?'} min · ${r.categorie||''}</small>
     </div>
-    ${part ? `<div class="c"><b>Part conseillée pour votre profil :</b> ${part}</div>` : ''}
-    <div class="c">
-      <h3>Ingrédients</h3>
-      <ul>${(r.ingredients||[]).map(i=>`<li><b>${i.nom}</b>${i.qte?' — '+i.qte:''} ${State.pantry.includes(i.nom)?'<span style="color:var(--gr)">✓</span>':''}</li>`).join('')}</ul>
+    ${part ? `<div class="card ok"><strong>📏 Part conseillée :</strong> ${part}</div>` : ''}
+    <div class="card">
+      <h3>🧺 Ingrédients</h3>
+      <ul style="padding-left:20px;line-height:1.9">
+        ${(r.ingredients||[]).map(i => `<li><strong>${i.nom}</strong>${i.qte?' — '+i.qte:''}</li>`).join('')}
+      </ul>
     </div>
-    <div class="c">
-      <h3>Étapes</h3>
-      <ol>${(r.etapes||[]).map(s=>`<li style="margin-bottom:8px">${s}</li>`).join('')}</ol>
+    <div class="card">
+      <h3>👨‍🍳 Préparation</h3>
+      <ol class="steps-list">
+        ${(r.etapes||[]).map(s => `<li>${s}</li>`).join('')}
+      </ol>
     </div>
-    ${r.nutrition ? `<div class="c">
-      <h3>Apports (portion de référence)</h3>
-      <p class="mu">${r.nutrition.kcal||'?'} kcal · ${r.nutrition.protG||0} g protéines${r.nutrition.ferMg?` · ${r.nutrition.ferMg} mg fer`:''}${r.nutrition.calciumMg?` · ${r.nutrition.calciumMg} mg calcium`:''}</p>
-    </div>` : ''}
-    ${r.securite ? `<div class="c warn"><b>Précautions :</b> ${r.securite}</div>` : ''}
-    ${r.source ? `<div class="c mu">Source : ${r.source}</div>` : ''}`;
+    ${r.nutrition ? `
+      <div class="card">
+        <h3>📊 Apports nutritionnels</h3>
+        <div class="nutrition-grid">
+          <div class="nutrition-item"><div class="val">${r.nutrition.kcal||'?'}</div><div class="lbl">kcal</div></div>
+          <div class="nutrition-item"><div class="val">${r.nutrition.protG||0}g</div><div class="lbl">Protéines</div></div>
+          ${r.nutrition.ferMg ? `<div class="nutrition-item"><div class="val">${r.nutrition.ferMg}mg</div><div class="lbl">Fer</div></div>` : ''}
+          ${r.nutrition.calciumMg ? `<div class="nutrition-item"><div class="val">${r.nutrition.calciumMg}mg</div><div class="lbl">Calcium</div></div>` : ''}
+        </div>
+      </div>` : ''}
+    ${r.securite ? `<div class="card warn"><h3>⚠️ Précautions</h3><p class="mu">${r.securite}</p></div>` : ''}
+    ${r.source ? `<div class="card"><p class="mu"><strong>📚 Source :</strong> ${r.source}</p></div>` : ''}
+    ${renderFooter()}`;
 }
 
+/* ============================================================
+   VUE CROISSANCE
+   ============================================================ */
 function addMeasurement(){
   const d = document.getElementById('gw_date').value;
   const w = parseFloat(document.getElementById('gw_weight').value);
   const h = parseFloat(document.getElementById('gw_height').value);
-  if(!d || isNaN(w) || w<=0){ alert("Saisissez au moins la date et un poids valides."); return; }
+  if(!d || isNaN(w) || w <= 0){
+    toast('Saisissez une date et un poids valides', 'err');
+    return;
+  }
   State.measurements.push({ date:d, weight:w, height:isNaN(h)?null:h });
-  State.measurements.sort((a,b)=> parseD(a.date) - parseD(b.date));
-  persist(); renderApp();
+  State.measurements.sort((a,b) => parseD(a.date) - parseD(b.date));
+  persist();
+  toast('✓ Mesure enregistrée', 'ok');
+  renderApp();
 }
+
+function deleteMeasurement(i){
+  confirmAction('Supprimer cette mesure ?', 'Cette action est irréversible.', () => {
+    State.measurements.splice(i, 1);
+    persist();
+    toast('Mesure supprimée', 'ok');
+    renderApp();
+  });
+}
+
 function ageMoisDepuisDob(dateMesure){
   if(!State.dob) return null;
   return Math.round(diffDays(parseD(State.dob), parseD(dateMesure)) / 30.4375);
 }
+
 function viewGrow(){
   const isChild = State.mode === 'child' && State.dob;
   if(!isChild){
-    return `<h2>📈 Suivi de croissance</h2>
-      <div class="c warn">Renseignez d'abord la date de naissance de votre enfant dans le profil pour activer le suivi de croissance.</div>
-      <button onclick="setTab('profile')">Ouvrir mon profil</button>`;
+    return `
+      <h2>📈 Suivi de croissance</h2>
+      <div class="card warn">
+        <h3>⚠️ Profil enfant requis</h3>
+        <p class="mu">Renseignez la date de naissance de votre enfant dans le profil pour activer le suivi de croissance OMS.</p>
+        <button class="full" onclick="setTab('profile')">Ouvrir mon profil</button>
+      </div>
+      ${renderFooter()}`;
   }
   const ca = Math.round(diffDays(parseD(State.dob), new Date()) / 30.4375);
   const mesures = State.measurements.map(m => ({ ...m, ageMois: ageMoisDepuisDob(m.date) }));
-  const last = mesures[mesures.length-1];
+  const last = mesures[mesures.length - 1];
   const interp = last ? interpPoids(State.childSex, last.ageMois, last.weight) : null;
 
-  return `<h2>📈 Suivi de croissance (OMS 2006)</h2>
-    <div class="c">
-      <h3>Courbe poids-pour-âge · ${State.childSex==='f'?'Fille':'Garçon'}</h3>
-      ${svgGrowthChart(State.childSex, mesures, ca)}
-      <small class="mu">Source : OMS 2006 — who.int/childgrowth/standards</small>
-    </div>
-    ${interp ? `<div class="c ${interp.alert}"><h3>Dernière évaluation</h3><p>${interp.message}</p>
-      <small class="mu">${last.date} · ${last.weight} kg · ${last.height?last.height+' cm':''} · ${last.ageMois} mois · zone : ${interp.zone}</small>
-    </div>` : ''}
-    <div class="c">
-      <h3>Enregistrer une nouvelle mesure</h3>
-      <label>Date</label>
+  return `
+    <h2>📈 Suivi de croissance</h2>
+    <p class="lead">Courbes OMS 2006 · ${State.childSex === 'f' ? 'Fille' : 'Garçon'}</p>
+    ${svgGrowthChart(State.childSex, mesures, ca)}
+    ${interp ? `
+      <div class="card ${interp.alert === 'alert' ? 'alert' : interp.alert === 'warn' ? 'warn' : 'ok'}">
+        <h3>Dernière évaluation</h3>
+        <p style="font-weight:700;margin:0">${interp.message}</p>
+        <p class="mu" style="margin-top:8px">${last.date} · ${last.weight} kg ${last.height?`· ${last.height} cm`:''} · ${last.ageMois} mois</p>
+      </div>` : ''}
+    <div class="card">
+      <h3>➕ Nouvelle mesure</h3>
+      <label>Date de la pesée</label>
       <input type="date" id="gw_date" value="${todayISO()}">
       <div class="row">
         <div><label>Poids (kg)</label><input type="number" id="gw_weight" step="0.05" placeholder="ex. 6.8"></div>
         <div><label>Taille (cm)</label><input type="number" id="gw_height" step="0.5" placeholder="ex. 65"></div>
       </div>
-      <button onclick="addMeasurement()">Enregistrer</button>
+      <button class="full" onclick="addMeasurement()">Enregistrer la mesure</button>
     </div>
-    ${mesures.length ? `<div class="c scroll"><h3>Historique</h3>
-      <table><tr><th>Date</th><th>Âge</th><th>Poids</th><th>Taille</th><th></th></tr>
-      ${mesures.map((m,i)=>`<tr><td>${formatD(parseD(m.date))}</td><td>${m.ageMois} m</td><td><b>${m.weight} kg</b></td><td>${m.height?m.height+' cm':'—'}</td>
-        <td><button class="s d" onclick="State.measurements.splice(${i},1);persist();renderApp();">✕</button></td></tr>`).join('')}
-      </table></div>` : ''}`;
+    ${mesures.length ? `
+      <div class="card">
+        <h3>📋 Historique</h3>
+        <div class="scroll">
+          <table style="width:100%;border-collapse:collapse;font-size:14px">
+            <thead>
+              <tr style="border-bottom:2px solid var(--bord)">
+                <th style="text-align:left;padding:10px 4px">Date</th>
+                <th style="text-align:center;padding:10px 4px">Âge</th>
+                <th style="text-align:center;padding:10px 4px">Poids</th>
+                <th style="text-align:center;padding:10px 4px">Taille</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              ${mesures.map((m,i) => `
+                <tr style="border-bottom:1px solid var(--bord)">
+                  <td style="padding:10px 4px">${formatD(parseD(m.date))}</td>
+                  <td style="text-align:center;padding:10px 4px">${m.ageMois} m</td>
+                  <td style="text-align:center;padding:10px 4px"><strong>${m.weight} kg</strong></td>
+                  <td style="text-align:center;padding:10px 4px">${m.height?m.height+' cm':'—'}</td>
+                  <td style="text-align:right"><button class="s d" onclick="deleteMeasurement(${i})" style="padding:4px 10px;min-height:32px">🗑️</button></td>
+                </tr>`).join('')}
+            </tbody>
+          </table>
+        </div>
+      </div>` : ''}
+    ${renderFooter()}`;
 }
 
-function markVaccine(id,val){ if(val) State.vaccineRecords[id]=val; else delete State.vaccineRecords[id]; persist(); renderApp(); }
-function markVisit(id,val){ if(val) State.visitRecords[id]=val; else delete State.visitRecords[id]; persist(); renderApp(); }
+/* ============================================================
+   VUE SANTÉ
+   ============================================================ */
+function markVaccine(id, val){
+  if(val) State.vaccineRecords[id] = val;
+  else delete State.vaccineRecords[id];
+  persist();
+  toast('✓ Enregistré', 'ok');
+  renderApp();
+}
+function markVisit(id, val){
+  if(val) State.visitRecords[id] = val;
+  else delete State.visitRecords[id];
+  persist();
+  toast('✓ Enregistré', 'ok');
+  renderApp();
+}
+
 function viewHealth(){
-  const isPreg = State.mode==='preg';
-  const isChild = State.mode==='child';
-  const ca = isChild && State.dob ? Math.round(diffDays(parseD(State.dob), new Date())/30.4375) : null;
-  return `<h2>💉 Vaccinations & Consultations</h2>
+  const isPreg = State.mode === 'preg';
+  const isChild = State.mode === 'child';
+
+  return `
+    <h2>💉 Suivi santé</h2>
+    <p class="lead">Vaccins, CPN, CPON</p>
     ${isPreg ? `
-      <div class="c"><h3>Calendrier CPN (Bénin)</h3>
-        ${CPN_BENIN.map(c=>`<div class="c" style="margin:8px 0"><b>${c.name} (${c.term})</b><br><small class="mu">${c.actions}</small>
-          <input type="date" value="${State.visitRecords[c.id]||''}" onchange="markVisit('${c.id}', this.value)">
-        </div>`).join('')}
+      <div class="card">
+        <h3>🤰 Consultations prénatales (CPN)</h3>
+        <p class="mu">5 CPN obligatoires au Bénin</p>
+        ${CPN_BENIN.map(c => `
+          <div class="card" style="margin:10px 0;background:var(--vert-pale)">
+            <strong>${c.name} · ${c.term}</strong><br>
+            <small class="mu">${c.actions}</small>
+            <input type="date" value="${State.visitRecords[c.id]||''}" onchange="markVisit('${c.id}', this.value)">
+          </div>`).join('')}
       </div>
-      <div class="c"><h3>Vaccin Td mère</h3>
-        <label>Td1</label><input type="date" value="${State.vaccineRecords.td1||''}" onchange="markVaccine('td1',this.value)">
-        <label>Td2</label><input type="date" value="${State.vaccineRecords.td2||''}" onchange="markVaccine('td2',this.value)">
+      <div class="card">
+        <h3>💉 Vaccin Tétanos-Diphtérie</h3>
+        <label>Td1 (date)</label>
+        <input type="date" value="${State.vaccineRecords.td1||''}" onchange="markVaccine('td1', this.value)">
+        <label>Td2 (date)</label>
+        <input type="date" value="${State.vaccineRecords.td2||''}" onchange="markVaccine('td2', this.value)">
       </div>` : ''}
     ${isChild ? `
-      <div class="c"><h3>Calendrier PEV Bénin 2026</h3>
-        ${BENIN_PEV_2026.map(v=>{
+      <div class="card">
+        <h3>👶 Calendrier PEV Bénin 2026</h3>
+        ${BENIN_PEV_2026.map(v => {
           const done = !!State.vaccineRecords[v.id];
           const due = State.dob ? addDays(parseD(State.dob), v.days) : null;
-          return `<div class="c" style="margin:8px 0;border-left:4px solid ${done?'var(--gr)':'var(--go)'}">
-            <div style="display:flex;justify-content:space-between"><b>${v.ageLabel} : ${v.vaccines}</b>
-              <span class="tag ${done?'':'y'}">${done?'Administré':'À faire'}</span></div>
-            <small class="mu">${v.note}${due?' · Prévu : '+formatD(due):''}</small>
-            <input type="date" value="${State.vaccineRecords[v.id]||''}" onchange="markVaccine('${v.id}',this.value)">
-          </div>`;
+          return `
+            <div class="card" style="margin:10px 0;background:${done ? 'var(--vert-pale)' : 'var(--ocre-pale)'}">
+              <div style="display:flex;justify-content:space-between;align-items:center">
+                <strong>${v.ageLabel}</strong>
+                <span class="tag ${done?'':'y'}">${done?'✓ Administré':'À faire'}</span>
+              </div>
+              <p style="margin:6px 0;font-size:14px"><strong>${v.vaccines}</strong></p>
+              <small class="mu">${v.note}${due?` · Prévu : ${formatD(due)}`:''}</small>
+              <input type="date" value="${State.vaccineRecords[v.id]||''}" onchange="markVaccine('${v.id}', this.value)">
+            </div>`;
         }).join('')}
       </div>
-      <div class="c"><h3>Contacts postnatals (CPON)</h3>
-        ${CPON_BENIN.map(cp=>`<div class="c" style="margin:6px 0"><b>${cp.name}</b><br><small class="mu">${cp.desc}</small>
-          <input type="date" value="${State.visitRecords[cp.id]||''}" onchange="markVisit('${cp.id}',this.value)">
-        </div>`).join('')}
+      <div class="card">
+        <h3>👶 Contacts postnatals (CPON)</h3>
+        ${CPON_BENIN.map(cp => `
+          <div class="card" style="margin:10px 0;background:var(--vert-pale)">
+            <strong>${cp.name}</strong><br>
+            <small class="mu">${cp.desc}</small>
+            <input type="date" value="${State.visitRecords[cp.id]||''}" onchange="markVisit('${cp.id}', this.value)">
+          </div>`).join('')}
       </div>` : ''}
-    ${!isPreg && !isChild ? `<div class="c warn">Configurez votre profil (Grossesse ou Enfant) pour générer votre calendrier personnalisé.</div>` : ''}`;
+    ${!isPreg && !isChild ? `
+      <div class="card warn">
+        <p>Configurez votre profil (Grossesse ou Enfant) pour afficher votre calendrier personnalisé.</p>
+        <button class="full" onclick="setTab('profile')">Ouvrir mon profil</button>
+      </div>` : ''}
+    ${renderFooter()}`;
 }
 
+/* ============================================================
+   VUE DANGER
+   ============================================================ */
 function viewDanger(){
-  const t = I18N[State.lang] || I18N.fr;
-  return `<h2>🚨 ${t.dangerTitle}</h2>
-    <div class="c alert">${t.dangerSub}</div>
-    <div class="c"><h3>Chez la femme enceinte ou accouchée</h3>
-      <ul>${(DANGER_SIGNS.femme||[]).map(s=>`<li>${s}</li>`).join('')}</ul></div>
-    <div class="c"><h3>Chez le nouveau-né / nourrisson</h3>
-      <ul>${(DANGER_SIGNS.enfant||[]).map(s=>`<li>${s}</li>`).join('')}</ul></div>
-    <button onclick="setTab('centers')" style="width:100%">📞 Trouver un centre d'urgence</button>`;
+  return `
+    <button class="back-btn" onclick="setTab('today')">← Retour</button>
+    <h2>🚨 Signes de danger</h2>
+    <div class="card alert">
+      <p style="margin:0;font-weight:800">Rendez-vous IMMÉDIATEMENT au centre de santé le plus proche si vous observez l'un de ces signes.</p>
+    </div>
+    <div class="card">
+      <h3>🤰 Chez la femme enceinte ou accouchée</h3>
+      <ul style="padding-left:20px;line-height:2">
+        ${(DANGER_SIGNS.femme||[]).map(s => `<li>${s}</li>`).join('')}
+      </ul>
+    </div>
+    <div class="card">
+      <h3>👶 Chez le nouveau-né / nourrisson</h3>
+      <ul style="padding-left:20px;line-height:2">
+        ${(DANGER_SIGNS.enfant||[]).map(s => `<li>${s}</li>`).join('')}
+      </ul>
+    </div>
+    <button class="full" onclick="setTab('centers')">📍 Trouver un centre d'urgence</button>
+    ${renderFooter()}`;
 }
 
+/* ============================================================
+   VUE PARTAGE
+   ============================================================ */
 function generateSummary(){
-  const lines = ["=== RÉSUMÉ DE SUIVI MILLEVIE (BÉNIN) ===", `Date : ${formatD(new Date())}`];
+  const lines = ['=== RÉSUMÉ DE SUIVI MILLEVIE (BÉNIN) ===', `Date : ${formatD(new Date())}`];
   if(State.name) lines.push(`Mère : ${State.name}`);
   if(State.commune) lines.push(`Commune : ${State.commune}`);
-  if(State.mode==='preg'){
+  if(State.mode === 'preg'){
     const j = jourCourant();
     lines.push(`Statut : Grossesse (jour ${j}/1000 · ${Math.floor(j/7)} SA)`);
     if(State.lmp) lines.push(`DDR : ${State.lmp}`);
-    CPN_BENIN.forEach(c=>lines.push(`${c.name} : ${State.visitRecords[c.id]||'Non notée'}`));
+    CPN_BENIN.forEach(c => lines.push(`${c.name} : ${State.visitRecords[c.id]||'Non notée'}`));
     lines.push(`Vaccin Td : Td1=${State.vaccineRecords.td1||'-'}, Td2=${State.vaccineRecords.td2||'-'}`);
-  } else if(State.mode==='child'){
+  } else if(State.mode === 'child'){
     const j = jourCourant();
     const ca = State.dob ? Math.round(diffDays(parseD(State.dob), new Date())/30.4375) : 0;
     lines.push(`Enfant : ${State.childName||'Nourrisson'} (${State.childSex==='f'?'Fille':'Garçon'})`);
     lines.push(`Né(e) le : ${State.dob} (${ca} mois, J${j}/1000)`);
-    lines.push("\n-- DERNIÈRES MESURES --");
-    State.measurements.slice(-3).forEach(m=>lines.push(`${m.date} : ${m.weight} kg${m.height?', '+m.height+' cm':''}`));
-    lines.push("\n-- VACCINATIONS --");
-    BENIN_PEV_2026.forEach(v=>lines.push(`${v.ageLabel} : ${State.vaccineRecords[v.id]||'Non enregistré'}`));
+    lines.push('\n-- DERNIÈRES MESURES --');
+    State.measurements.slice(-3).forEach(m => lines.push(`${m.date} : ${m.weight} kg${m.height?', '+m.height+' cm':''}`));
+    lines.push('\n-- VACCINATIONS --');
+    BENIN_PEV_2026.forEach(v => lines.push(`${v.ageLabel} : ${State.vaccineRecords[v.id]||'Non enregistré'}`));
   }
-  lines.push("\nDocument préparé par la mère pour consultation médicale.");
+  lines.push('\nDocument préparé par la mère pour consultation médicale.');
   return lines.join('\n');
 }
+
 function viewShare(){
   const s = generateSummary();
-  return `<h2>📤 Partager avec un soignant</h2>
-    <div class="c">
-      <p class="mu">Vous restez propriétaire de vos données. Ce résumé permet au soignant de visualiser rapidement votre historique.</p>
-      <textarea rows="12" readonly style="font-family:monospace;font-size:12px">${s}</textarea>
+  return `
+    <button class="back-btn" onclick="setTab('today')">← Retour</button>
+    <h2>📤 Partager avec un soignant</h2>
+    <div class="card">
+      <p class="mu">Ce résumé permet au soignant de visualiser votre historique. Vos données restent sur votre téléphone.</p>
+      <textarea rows="12" readonly style="font-family:monospace;font-size:12px;min-height:220px">${s}</textarea>
       <div class="row">
-        <button onclick="navigator.clipboard.writeText(document.querySelector('textarea').value);alert('Copié !')">📋 Copier</button>
-        <button class="o" onclick="window.print()">🖨️ Imprimer / PDF</button>
+        <button onclick="copySummary('${s.replace(/'/g,"\\'").replace(/\n/g,'\\n')}')">📋 Copier</button>
+        <button class="o" onclick="window.print()">🖨️ Imprimer</button>
       </div>
-    </div>`;
+    </div>
+    ${renderFooter()}`;
 }
 
+function copySummary(text){
+  navigator.clipboard.writeText(text).then(() => toast('✓ Copié dans le presse-papier', 'ok'));
+}
+
+/* ============================================================
+   VUE QUIZ
+   ============================================================ */
 function answerQuiz(idx, val){
   State.quizAnswers[idx] = val;
-  persist(); renderApp();
+  persist();
+  renderApp();
 }
+
 function viewQuiz(){
-  return `<h2>🧠 Quiz Éducatif</h2>
-    <p class="mu">Apprenez à votre rythme (${QUIZ_ITEMS.length} questions).</p>
-    ${QUIZ_ITEMS.map((q,i)=>{
+  return `
+    <button class="back-btn" onclick="setTab('more')">← Retour</button>
+    <h2>🧠 Quiz éducatif</h2>
+    <p class="lead">${QUIZ_ITEMS.length} questions pour apprendre en s'amusant</p>
+    ${QUIZ_ITEMS.map((q, i) => {
       const ans = State.quizAnswers[i];
       const correct = ans !== undefined && ans === q.vrai;
-      return `<div class="c">
-        <span class="tag">${q.theme}</span>
-        <b style="display:block;margin:6px 0">${q.q}</b>
-        <div class="row" style="margin-top:8px">
-          <button class="s o" onclick="answerQuiz(${i}, true)">VRAI</button>
-          <button class="s o" onclick="answerQuiz(${i}, false)">FAUX</button>
-        </div>
-        ${ans!==undefined ? `<div style="margin-top:8px" class="${correct?'ok':'alert'}">
-          <b>${correct?'✓ Exact !':'✗ Pas tout à fait.'}</b> ${q.exp}
-          <div class="mu" style="margin-top:4px">Source : ${q.src||'OMS'}</div>
-        </div>` : ''}
-      </div>`;
-    }).join('')}`;
+      return `
+        <div class="card anim-up" style="animation-delay:${Math.min(i*0.05,0.5)}s">
+          <span class="tag">${q.theme}</span>
+          <p style="font-weight:800;font-size:15px;margin:10px 0">${q.q}</p>
+          <div class="row">
+            <button class="${ans===true?'':'o'}" onclick="answerQuiz(${i}, true)">✓ VRAI</button>
+            <button class="${ans===false?'':'o'}" onclick="answerQuiz(${i}, false)">✗ FAUX</button>
+          </div>
+          ${ans !== undefined ? `
+            <div class="${correct?'card ok':'card alert'}" style="margin-top:12px;padding:14px">
+              <strong>${correct?'✓ Exact !':'✗ Pas tout à fait.'}</strong>
+              <p class="mu" style="margin:6px 0 0">${q.exp}</p>
+              <p class="mu" style="margin-top:6px;font-size:11px"><em>Source : ${q.src||'OMS'}</em></p>
+            </div>` : ''}
+        </div>`;
+    }).join('')}
+    ${renderFooter()}`;
 }
 
+/* ============================================================
+   VUE ÉVEIL
+   ============================================================ */
 function viewStim(){
   const j = jourCourant();
-  const isPreg = State.mode==='preg' || j < 0;
+  const isPreg = State.mode === 'preg' || j < 0;
   const ca = (State.dob && !isPreg) ? Math.round(diffDays(parseD(State.dob), new Date())/30.4375) : null;
-  const list = ACTIVITIES.filter(a=>{
+  const list = ACTIVITIES.filter(a => {
     if(isPreg) return a.ageMin <= 0 && a.ageMax >= 0 && a.type.startsWith('Femme');
-    if(ca===null) return false;
+    if(ca === null) return false;
     return a.ageMin <= ca && a.ageMax >= ca;
   });
-  return `<h2>🧸 Activités d'éveil et bien-être</h2>
-    ${isPreg ? '<div class="c warn">Activités pour la femme enceinte.</div>' : ''}
-    ${list.length===0 ? '<div class="c mu">Aucune activité filtrée pour votre profil. Configurez votre profil ou choisissez une autre plage.</div>' : ''}
-    ${list.map(a=>`<div class="c">
-      <span class="tag">${a.type}</span>
-      <h3 style="margin:6px 0 4px">${a.titre}</h3>
-      <div class="mu">⏱ ${a.duree} min · ${a.materiel||'Aucun matériel'}</div>
-      <p>${a.description}</p>
-    </div>`).join('')}`;
+
+  return `
+    <button class="back-btn" onclick="setTab('more')">← Retour</button>
+    <h2>🧸 Activités d'éveil</h2>
+    <p class="lead">${isPreg?'Bien-être pendant la grossesse':'Activités adaptées à l\'âge de bébé'}</p>
+    ${list.length === 0 ? `
+      <div class="empty-state">
+        <div class="emoji">🧸</div>
+        <h3>Aucune activité filtrée</h3>
+        <p>Configurez votre profil pour personnaliser</p>
+      </div>` : ''}
+    ${list.map((a,i) => `
+      <div class="card anim-up" style="animation-delay:${Math.min(i*0.05,0.5)}s">
+        <span class="tag">${a.type}</span>
+        <h3 style="margin:8px 0">${a.titre}</h3>
+        <p class="mu">⏱ ${a.duree} min · ${a.materiel || 'Aucun matériel'}</p>
+        <p style="font-size:14.5px;margin-top:10px">${a.description}</p>
+      </div>`).join('')}
+    ${renderFooter()}`;
 }
 
+/* ============================================================
+   VUE CENTRES
+   ============================================================ */
 function addCustomCenter(){
-  const n = document.getElementById('new_c_name').value.trim();
-  const v = document.getElementById('new_c_city').value.trim();
-  const t = document.getElementById('new_c_tel').value.trim();
-  if(!n) return alert('Indiquez au moins le nom.');
-  State.userCenters.push({nom:n,ville:v,tel:t,urgence:"Ajouté par l'utilisatrice"});
-  persist(); renderApp();
+  const n = document.getElementById('nc_name').value.trim();
+  const v = document.getElementById('nc_city').value.trim();
+  const t = document.getElementById('nc_tel').value.trim();
+  if(!n){ toast('Indiquez au moins le nom du centre', 'err'); return; }
+  State.userCenters.push({ nom:n, ville:v, tel:t, urgence:"Ajouté par l'utilisatrice" });
+  persist();
+  toast('✓ Centre ajouté', 'ok');
+  renderApp();
 }
+
+function deleteCenter(i){
+  confirmAction('Supprimer ce centre ?', 'Il sera retiré de votre liste.', () => {
+    State.userCenters.splice(i, 1);
+    persist();
+    toast('Centre supprimé', 'ok');
+    renderApp();
+  });
+}
+
 function viewCenters(){
   const all = [...DEFAULT_CENTRES, ...State.userCenters];
-  return `<h2>📍 Centres de santé</h2>
-    <div class="c">
-      <a class="b" href="https://www.google.com/maps/search/centre+de+sante+benin" target="_blank" style="width:100%">🗺️ Ouvrir la carte</a>
+  return `
+    <button class="back-btn" onclick="setTab('more')">← Retour</button>
+    <h2>📍 Centres de santé</h2>
+    <div class="card">
+      <a class="b full" href="https://www.google.com/maps/search/centre+de+sante+benin" target="_blank" style="text-decoration:none">🗺️ Ouvrir la carte Google Maps</a>
     </div>
-    <div class="c">
-      ${all.map(c=>`<div class="c" style="margin:8px 0"><b>${c.nom}</b> (${c.ville})<br>
-        <small class="mu">${c.urgence}</small>
-        ${c.tel?`<br><a class="b s" href="tel:${c.tel}" style="margin-top:6px">📞 ${c.tel}</a>`:''}
+    <h3 style="margin-top:24px">Centres de référence</h3>
+    ${all.map((c, i) => `
+      <div class="card anim-up" style="animation-delay:${Math.min(i*0.03,0.4)}s">
+        <h3>${c.nom}</h3>
+        <p class="mu">📍 ${c.ville} · ${c.urgence}</p>
+        ${c.tel?`<a href="tel:${c.tel}" class="b s" style="margin-top:10px;text-decoration:none">📞 ${c.tel}</a>`:''}
+        ${i >= DEFAULT_CENTRES.length ? `<button class="s d" onclick="deleteCenter(${i-DEFAULT_CENTRES.length})" style="margin-left:8px">🗑️ Supprimer</button>` : ''}
       </div>`).join('')}
+    <div class="card">
+      <h3>➕ Ajouter votre centre de quartier</h3>
+      <input id="nc_name" placeholder="Nom du centre / maternité">
+      <input id="nc_city" placeholder="Ville">
+      <input id="nc_tel" type="tel" placeholder="Téléphone">
+      <button class="full" onclick="addCustomCenter()">Enregistrer ce centre</button>
     </div>
-    <div class="c"><h3>Ajouter un centre</h3>
-      <input id="new_c_name" placeholder="Nom du centre">
-      <input id="new_c_city" placeholder="Ville">
-      <input id="new_c_tel" type="tel" placeholder="Téléphone">
-      <button onclick="addCustomCenter()">Enregistrer</button>
-    </div>`;
+    ${renderFooter()}`;
 }
 
+/* ============================================================
+   VUE PLUS
+   ============================================================ */
 function viewMore(){
-  return `<h2>☰ Menu</h2>
-    <div class="grid">
-      <button class="tile" onclick="setTab('profile')"><span>👤</span>Mon Profil</button>
-      <button class="tile" onclick="setTab('quiz')"><span>🧠</span>Quiz</button>
-      <button class="tile" onclick="setTab('stim')"><span>🧸</span>Éveil</button>
-      <button class="tile" onclick="setTab('share')"><span>📤</span>Fiche soignant</button>
-      <button class="tile" onclick="setTab('centers')"><span>📍</span>Centres</button>
-      <button class="tile" onclick="setTab('danger')"><span>🚨</span>Urgences</button>
+  return `
+    <h2>☰ Plus</h2>
+    <div class="tiles-grid">
+      <button class="tile" onclick="setTab('profile')"><span class="tile-emoji">👤</span>Mon profil</button>
+      <button class="tile" onclick="setTab('quiz')"><span class="tile-emoji">🧠</span>Quiz éducatif</button>
+      <button class="tile" onclick="setTab('stim')"><span class="tile-emoji">🧸</span>Éveil & jeux</button>
+      <button class="tile" onclick="setTab('share')"><span class="tile-emoji">📤</span>Fiche soignant</button>
+      <button class="tile" onclick="setTab('centers')"><span class="tile-emoji">📍</span>Centres santé</button>
+      <button class="tile" onclick="setTab('danger')"><span class="tile-emoji">🚨</span>Urgences</button>
+      <button class="tile" onclick="setTab('about')"><span class="tile-emoji">ℹ️</span>À propos</button>
+      <button class="tile" onclick="setTab('help')"><span class="tile-emoji">❓</span>Aide</button>
     </div>
-    <div class="c" style="text-align:center">
-      <b>MILLEVIE — 1000 jours Bénin</b>
-      <p class="mu">Fonctionne intégralement hors ligne.<br>Conforme au Code du Numérique en République du Bénin (Loi 2017-20).</p>
-      <p class="mu" style="margin-top:10px">${RECIPES_DB.length} recettes · ${QUIZ_ITEMS.length} quiz · ${ACTIVITIES.length} activités</p>
-    </div>`;
+    ${renderFooter()}`;
 }
 
+/* ============================================================
+   VUE PROFIL
+   ============================================================ */
 function saveProfileData(){
   const mode = document.getElementById('p_mode').value;
   const lmp = document.getElementById('p_lmp').value;
@@ -770,55 +1588,174 @@ function saveProfileData(){
   const sex = document.getElementById('p_csex').value;
   const com = document.getElementById('p_commune').value.trim();
 
-  if(mode==='preg' && !lmp && !conception){ alert('Indiquez la date des dernières règles OU la date de conception.'); return; }
-  if(mode==='child' && !dob && !conception){ alert('Indiquez la date de naissance de votre enfant OU la date de conception.'); return; }
+  if(mode === 'preg' && !lmp && !conception){ toast('Indiquez la DDR ou la date de conception', 'err'); return; }
+  if(mode === 'child' && !dob && !conception){ toast('Indiquez la date de naissance ou de conception', 'err'); return; }
 
   State.mode = mode; State.lmp = lmp; State.dob = dob; State.conceptionDate = conception;
   State.name = name; State.childName = cn; State.childSex = sex; State.commune = com;
   persist();
+  toast('✓ Profil enregistré', 'ok');
   setTab('today');
 }
+
 function viewProfile(){
-  return `<h2>👤 Mon Profil MILLEVIE</h2>
-    <div class="c">
-      <label>Ma situation :</label>
+  return `
+    <button class="back-btn" onclick="setTab('more')">← Retour</button>
+    <h2>👤 Mon profil</h2>
+    <div class="card">
+      <label>Ma situation actuelle</label>
       <select id="p_mode">
-        <option value="preg" ${State.mode==='preg'?'selected':''}>Je suis enceinte</option>
-        <option value="child" ${State.mode==='child'?'selected':''}>J'ai un enfant de moins de 2 ans</option>
-        <option value="prep" ${State.mode==='prep'?'selected':''}>Je prépare une grossesse</option>
+        <option value="preg" ${State.mode==='preg'?'selected':''}>🤰 Je suis enceinte</option>
+        <option value="child" ${State.mode==='child'?'selected':''}>👶 J'ai un enfant de moins de 2 ans</option>
+        <option value="prep" ${State.mode==='prep'?'selected':''}>🌱 Je prépare une grossesse</option>
       </select>
-
-      <label>Mon prénom (facultatif)</label>
-      <input id="p_name" value="${State.name||''}">
-
-      <label>Date des dernières règles (DDR) si grossesse</label>
+      <label>Mon prénom <small>(facultatif)</small></label>
+      <input id="p_name" value="${State.name||''}" placeholder="ex. Amina">
+      <label>Date des dernières règles (DDR)</label>
       <input type="date" id="p_lmp" value="${State.lmp||''}">
-
-      <label>Date de naissance de l'enfant si déjà né</label>
+      <label>Date de naissance de l'enfant</label>
       <input type="date" id="p_dob" value="${State.dob||''}">
-
-      <label>Date de conception (optionnelle, précise)</label>
+      <label>Date de conception <small>(optionnelle)</small></label>
       <input type="date" id="p_conception" value="${State.conceptionDate||''}">
-      <small class="mu">J0 = date de conception. Sans cette date, J0 sera estimé (DDR+14j ou naissance-270j).</small>
-
       <div class="row">
-        <div><label>Prénom de l'enfant</label><input id="p_cname" value="${State.childName||''}"></div>
+        <div><label>Prénom enfant</label><input id="p_cname" value="${State.childName||''}"></div>
         <div><label>Sexe</label><select id="p_csex">
           <option value="m" ${State.childSex==='m'?'selected':''}>Garçon</option>
           <option value="f" ${State.childSex==='f'?'selected':''}>Fille</option>
         </select></div>
       </div>
-
-      <label>Commune de résidence (Bénin)</label>
+      <label>Commune de résidence</label>
       <input id="p_commune" value="${State.commune||'Cotonou'}">
-
-      <button style="width:100%;margin-top:10px" onclick="saveProfileData()">Enregistrer mon profil</button>
-    </div>`;
+      <button class="full" onclick="saveProfileData()">💾 Enregistrer</button>
+    </div>
+    <div class="card">
+      <h3>🌍 Langue</h3>
+      <button class="full o" onclick="toggleLang()">${State.lang === 'fr' ? '🇫🇷 Français → 🇬🇧 English' : '🇬🇧 English → 🇫🇷 Français'}</button>
+    </div>
+    ${renderFooter()}`;
 }
 
 /* ============================================================
-   8. INITIALISATION
+   VUE À PROPOS
    ============================================================ */
+function viewAbout(){
+  return `
+    <button class="back-btn" onclick="setTab('more')">← Retour</button>
+    <h2>ℹ️ À propos de MILLEVIE</h2>
+    <div class="card-hero card">
+      <div class="big">🌱</div>
+      <h3 style="color:#fff;font-size:20px">MILLEVIE</h3>
+      <p style="color:rgba(255,255,255,.9);margin:6px 0 0">Bien nourrir aujourd'hui, mieux grandir demain</p>
+    </div>
+    <div class="card">
+      <h3>🎯 Notre mission</h3>
+      <p>Accompagner les mères et les familles béninoises pendant les <strong>1000 premiers jours</strong> — de la conception aux 2 ans de l'enfant — avec une nutrition adaptée, un suivi de croissance et des conseils de santé validés.</p>
+    </div>
+    <div class="card">
+      <h3>✨ Ce que contient MILLEVIE</h3>
+      <ul style="line-height:2;padding-left:20px">
+        <li><strong>${RECIPES_DB.length || 400} recettes</strong> béninoises avec valeurs nutritionnelles</li>
+        <li><strong>Menus personnalisés</strong> J0 → J1000 (matin/midi/soir)</li>
+        <li><strong>Courbes OMS</strong> de croissance (garçons et filles)</li>
+        <li><strong>Calendrier vaccinal</strong> PEV Bénin 2026</li>
+        <li><strong>Suivi CPN</strong> (grossesse) et <strong>CPON</strong> (nouveau-né)</li>
+        <li><strong>Quiz éducatifs</strong> et activités d'éveil</li>
+        <li><strong>Fiche soignant</strong> exportable</li>
+        <li>Fonctionne <strong>100 % hors ligne</strong></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>👨‍💻 Concepteur</h3>
+      <div class="contact-card">
+        <p style="margin:0 0 8px;font-weight:800;font-size:16px">FANOU Sosthène</p>
+        <a href="tel:+2290196622647">📞 +229 01 96 62 26 47</a>
+        <a href="mailto:sosthnefanou@yahoo.fr">✉️ sosthnefanou@yahoo.fr</a>
+      </div>
+    </div>
+    <div class="card">
+      <h3>📚 Sources des données</h3>
+      <ul style="line-height:1.8;padding-left:20px;font-size:14px">
+        <li>INFLOR / FSA / UAC 2017</li>
+        <li>FoodAfrica / Bioversity 2018</li>
+        <li>OMS 2006 (courbes de croissance)</li>
+        <li>PEV Bénin 2026 (calendrier vaccinal)</li>
+        <li>PNLP Bénin (paludisme)</li>
+      </ul>
+    </div>
+    <div class="card warn">
+      <h3>⚠️ Avertissement</h3>
+      <p class="mu">MILLEVIE est un <strong>guide éducatif</strong>. Il ne remplace en aucun cas une consultation médicale. En cas de doute ou de signe d'alerte, consultez immédiatement un professionnel de santé.</p>
+    </div>
+    <div class="card">
+      <p class="mu" style="text-align:center">
+        Version 3.0 · Conforme au Code du Numérique<br>
+        République du Bénin (Loi 2017-20)
+      </p>
+    </div>
+    ${renderFooter()}`;
+}
+
+/* ============================================================
+   VUE AIDE
+   ============================================================ */
+function viewHelp(){
+  return `
+    <button class="back-btn" onclick="setTab('more')">← Retour</button>
+    <h2>❓ Aide & conseils</h2>
+    <div class="card">
+      <h3>🚀 Premiers pas</h3>
+      <p><strong>1. Configurez votre profil</strong> (Aujourd'hui → Compléter mon profil). Indiquez si vous êtes enceinte ou si vous avez un enfant.</p>
+      <p><strong>2. Découvrez votre menu du jour</strong> — 3 repas adaptés à votre situation (matin, midi, soir).</p>
+      <p><strong>3. Cochez vos ingrédients</strong> dans l'onglet Cuisiner pour découvrir les recettes possibles.</p>
+    </div>
+    <div class="card">
+      <h3>📈 Suivre la croissance</h3>
+      <p>Après chaque pesée chez le soignant, entrez le poids et la taille dans l'onglet Croissance. L'app compare automatiquement avec les courbes OMS.</p>
+      <p class="mu">⚠️ Une courbe qui sort des limites ne remplace pas l'avis du médecin.</p>
+    </div>
+    <div class="card">
+      <h3>📤 Fiche soignant</h3>
+      <p>Avant une consultation, ouvrez <strong>Plus → Fiche soignant</strong>. Vous pourrez copier ou imprimer un résumé de votre suivi à montrer au soignant.</p>
+    </div>
+    <div class="card">
+      <h3>🚨 Urgences</h3>
+      <p>Le bouton rouge <strong>Signes de danger</strong> liste les situations qui nécessitent une consultation immédiate. En cas de doute, allez au centre de santé le plus proche.</p>
+    </div>
+    <div class="card">
+      <h3>🔒 Vos données</h3>
+      <p>Toutes vos informations restent <strong>sur votre téléphone</strong>. Elles ne sont jamais envoyées sur Internet. Vous pouvez les effacer en désinstallant l'application.</p>
+    </div>
+    <div class="card">
+      <h3>💬 Contact</h3>
+      ${renderConcepteur()}
+    </div>
+    ${renderFooter()}`;
+}
+
+/* ============================================================
+   BOOT
+   ============================================================ */
+async function boot(){
+  try {
+    const resp = await fetch('data/recipes.json');
+    if(!resp.ok) throw new Error('HTTP ' + resp.status);
+    const data = await resp.json();
+    if(!data.recipes || !Array.isArray(data.recipes)){
+      throw new Error('Format invalide');
+    }
+    RECIPES_DB = data.format === 'compact-v1' ? expandRecipes(data.recipes) : data.recipes;
+    if(RECIPES_DB.length === 0) throw new Error('Aucune recette');
+  } catch(e){
+    console.error('Erreur recipes:', e);
+    DATA_ERROR = e.message;
+  }
+  try { WHO_DATA = await (await fetch('data/who_growth.json')).json(); } catch(e){ console.warn('who',e); }
+  try { ACTIVITIES = (await (await fetch('data/activities.json')).json()).activities; } catch(e){ console.warn('act',e); }
+  try { QUIZ_ITEMS = (await (await fetch('data/quiz.json')).json()).quiz; } catch(e){ console.warn('quiz',e); }
+  try { DANGER_SIGNS = await (await fetch('data/danger_signs.json')).json(); } catch(e){ console.warn('danger',e); }
+  renderApp();
+}
+
 if('serviceWorker' in navigator){
   navigator.serviceWorker.register('sw.js').catch(()=>{});
 }
