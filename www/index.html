@@ -418,6 +418,33 @@ label small{font-weight:500;color:var(--txt-mu)}
 .chart-legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:12px;font-size:12px;font-weight:700}
 .chart-legend span{display:flex;align-items:center;gap:6px}
 .chart-legend .dot{width:12px;height:12px;border-radius:3px}
+  /* ============ NOUVEAU DESIGN FICHE RECETTE ============ */
+.recipe-infographic { background: var(--blanc); border-radius: var(--r); overflow: hidden; border: 1px solid var(--bord); margin-bottom: 20px; }
+.recipe-hero-img { width: 100%; height: 220px; object-fit: cover; background: #eee; }
+.recipe-title-box { padding: 16px; background: var(--vert); color: white; }
+.recipe-title-box h2 { color: white; margin: 0; font-size: 22px; text-transform: uppercase; letter-spacing: 1px; }
+.recipe-title-box small { color: rgba(255,255,255,.8); font-size: 14px; font-weight: 700; }
+.nutrition-infographic { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 2px dashed var(--bord); }
+.nutri-col { padding: 12px; text-align: center; border-right: 1px dashed var(--bord); }
+.nutri-col:last-child { border-right: none; }
+.nutri-title { font-size: 11px; font-weight: 900; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.5px; }
+.nutri-title.energy { color: #d97706; border-bottom: 2px solid #d97706; padding-bottom: 2px; }
+.nutri-title.build { color: #4b5563; border-bottom: 2px solid #4b5563; padding-bottom: 2px; }
+.nutri-title.protect { color: #15803d; border-bottom: 2px solid #15803d; padding-bottom: 2px; }
+.nutri-item { font-size: 13px; margin: 4px 0; color: var(--txt); font-weight: 600; }
+.nutri-emoji { font-size: 24px; margin-bottom: 4px; display: block; }
+.steps-container { padding: 16px; background: var(--creme); }
+.step-row { display: flex; gap: 12px; margin-bottom: 16px; align-items: flex-start; }
+.step-icon { width: 40px; height: 40px; flex-shrink: 0; background: white; border-radius: 50%; border: 2px solid var(--vert); display: flex; align-items: center; justify-content: center; font-size: 20px; box-shadow: var(--ombre-sm); }
+.step-text { flex: 1; font-size: 15px; line-height: 1.4; font-weight: 600; color: var(--txt); padding-top: 8px; }
+.step-text span { color: var(--vert); font-weight: 900; margin-right: 6px; }
+.avatar-wrapper { position: fixed; bottom: calc(90px + var(--safe-bot)); right: 16px; z-index: 500; display: flex; align-items: flex-end; gap: 8px; }
+.avatar-svg { width: 70px; height: 70px; filter: drop-shadow(0 4px 8px rgba(0,0,0,.2)); }
+.bounce-anim { animation: floatAvatar 3s ease-in-out infinite; }
+@keyframes floatAvatar { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+.speech-bubble { background: white; border: 2px solid var(--vert); border-radius: 18px 18px 4px 18px; padding: 12px 16px; font-size: 14px; font-weight: 700; color: var(--vert); box-shadow: var(--ombre); max-width: 200px; position: relative; animation: popBubble 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) both; }
+@keyframes popBubble { 0% { opacity: 0; transform: scale(0.5) translateY(20px); transform-origin: bottom right; } 100% { opacity: 1; transform: scale(1) translateY(0); } }
+.speech-bubble::after { content: ''; position: absolute; bottom: -2px; right: -2px; width: 15px; height: 15px; background: white; border: 2px solid var(--vert); border-top: none; border-left: none; transform: rotate(45deg); }
 </style>
 </head>
 <body>
@@ -986,7 +1013,33 @@ function renderConcepteur(){
 /* ============================================================
    VUE AUJOURD'HUI
    ============================================================ */
-function viewToday(){
+function getAvatarSVG(type = 'maman') {
+  if (type === 'bebe') {
+    return `<svg class="avatar-svg bounce-anim" style="animation-delay: 1s; width: 50px; height: 50px;" viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="#e8b23c"/><circle cx="32" cy="32" r="22" fill="#f6c453"/><circle cx="24" cy="28" r="3" fill="#17241d"/><circle cx="40" cy="28" r="3" fill="#17241d"/><path d="M 26 40 Q 32 46 38 40" stroke="#17241d" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="18" cy="34" r="4" fill="#ffb6c1" opacity="0.6"/><circle cx="46" cy="34" r="4" fill="#ffb6c1" opacity="0.6"/></svg>`;
+  }
+  return `<svg class="avatar-svg bounce-anim" viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="#1d5a3b"/><circle cx="32" cy="32" r="26" fill="#2b7850"/><circle cx="32" cy="24" r="12" fill="#8b5a2b"/><rect x="20" y="34" width="24" height="18" rx="4" fill="#e8b23c"/><circle cx="26" cy="42" r="2" fill="#17241d"/><circle cx="38" cy="42" r="2" fill="#17241d"/><path d="M 28 48 Q 32 52 36 48" stroke="#17241d" stroke-width="2" fill="none" stroke-linecap="round"/></svg>`;
+}
+
+function renderAvatarBubble() {
+  const messages = [
+    "Bonjour maman ! Qu'est-ce qu'on mange aujourd'hui ?",
+    "N'oublie pas de laver tes légumes à l'eau propre !",
+    "Ton bébé grandit bien grâce à toi !",
+    "Un petit plat équilibré pour être en pleine forme !",
+    "Clique sur 'Que cuisiner' pour trouver une idée."
+  ];
+  const msg = messages[Math.floor(Math.random() * messages.length)];
+  return `
+    <div class="avatar-wrapper">
+      <div class="speech-bubble">${msg}</div>
+      <div style="position:relative; display:flex; align-items:flex-end">
+        ${getAvatarSVG('bebe')}
+        ${getAvatarSVG('maman')}
+      </div>
+    </div>
+  `;
+}
+  function viewToday(){
   const j = jourCourant();
   if(j < 0){
     return `
@@ -1070,7 +1123,7 @@ function viewToday(){
       <button class="tile" onclick="setTab('stim')"><span class="tile-emoji">🧸</span>Éveil</button>
       <button class="tile" onclick="setTab('share')"><span class="tile-emoji">📤</span>Fiche soignant</button>
     </div>
-    ${renderFooter()}`;
+   ${renderAvatarBubble()} ${renderFooter()}`;
 }
 
 function renderFooter(){
@@ -1153,39 +1206,74 @@ function viewRecipeDetail(id){
   const ctx = contexteJour(jourCourant());
   const part = partPourContexte(r, ctx);
 
+  let imgHtml = '';
+  if (r.id && parseInt(r.id.replace('R','')) <= 200) {
+    imgHtml = `<img src="img/recipes/${r.id}_visuel.jpg" class="recipe-hero-img" onerror="this.onerror=null; this.src='img/recipes/${r.id}_visuel.png'; this.onerror=function(){this.style.display='none'}" alt="${r.nom}">`;
+  } else {
+    imgHtml = `<div class="recipe-hero-img" style="display:flex;align-items:center;justify-content:center;font-size:80px;background:var(--vert-pale)">${emojiRecette(r)}</div>`;
+  }
+
+  const ingredients = r.ingredients || [];
+  const catEnergy = ingredients.filter(i => /huile|gari|riz|maïs|igname|pain|patate|sucre/i.test(i.nom));
+  const catBuild = ingredients.filter(i => /poisson|viande|poulet|haricot|niébé|œuf|lait|fromage|arachide/i.test(i.nom));
+  const catProtect = ingredients.filter(i => /tomate|oignon|feuille|moringa|baobab|gboma|carotte|piment|citron|gombo|épice/i.test(i.nom));
+
+  const getStepIcon = (text) => {
+    const t = text.toLowerCase();
+    if (t.includes('laver') || t.includes('rincer')) return '🚿';
+    if (t.includes('éplucher') || t.includes('couper') || t.includes('trancher')) return '🔪';
+    if (t.includes('cuire') || t.includes('bouillir') || t.includes('mijoter')) return '🔥';
+    if (t.includes('mixer') || t.includes('écraser') || t.includes('piler')) return '🥣';
+    if (t.includes('mariner')) return '⏳';
+    if (t.includes('frire')) return '🍳';
+    return '👨‍🍳';
+  };
+
   return `
-    <button class="back-btn" onclick="setTab('cook')">← Retour aux recettes</button>
-    <div class="recipe-hero">
-      <span class="emoji-big">${emojiRecette(r)}</span>
-      <h2>${r.nom}</h2>
-      <small>⏱ ${r.tempsMin||'?'} min · ${r.categorie||''}</small>
-    </div>
-    ${part ? `<div class="card ok"><strong>📏 Part conseillée :</strong> ${part}</div>` : ''}
-    <div class="card">
-      <h3>🧺 Ingrédients</h3>
-      <ul style="padding-left:20px;line-height:1.9">
-        ${(r.ingredients||[]).map(i => `<li><strong>${i.nom}</strong>${i.qte?' — '+i.qte:''}</li>`).join('')}
-      </ul>
-    </div>
-    <div class="card">
-      <h3>👨‍🍳 Préparation</h3>
-      <ol class="steps-list">
-        ${(r.etapes||[]).map(s => `<li>${s}</li>`).join('')}
-      </ol>
-    </div>
-    ${r.nutrition ? `
-      <div class="card">
-        <h3>📊 Apports nutritionnels</h3>
-        <div class="nutrition-grid">
-          <div class="nutrition-item"><div class="val">${r.nutrition.kcal||'?'}</div><div class="lbl">kcal</div></div>
-          <div class="nutrition-item"><div class="val">${r.nutrition.protG||0}g</div><div class="lbl">Protéines</div></div>
-          ${r.nutrition.ferMg ? `<div class="nutrition-item"><div class="val">${r.nutrition.ferMg}mg</div><div class="lbl">Fer</div></div>` : ''}
-          ${r.nutrition.calciumMg ? `<div class="nutrition-item"><div class="val">${r.nutrition.calciumMg}mg</div><div class="lbl">Calcium</div></div>` : ''}
+    <button class="back-btn" onclick="setTab('cook')">← Retour</button>
+    
+    <div class="recipe-infographic anim-up">
+      <div class="recipe-title-box">
+        <small>${r.categorie}</small>
+        <h2>${r.nom}</h2>
+      </div>
+      ${imgHtml}
+      
+      <div class="nutrition-infographic">
+        <div class="nutri-col">
+          <div class="nutri-title energy">ÉNERGIE</div>
+          <span class="nutri-emoji">⚡</span>
+          ${catEnergy.map(i => `<div class="nutri-item">${i.nom}</div>`).join('') || '<div class="nutri-item">-</div>'}
         </div>
-      </div>` : ''}
+        <div class="nutri-col">
+          <div class="nutri-title build">CONSTRUCTION</div>
+          <span class="nutri-emoji">🧱</span>
+          ${catBuild.map(i => `<div class="nutri-item">${i.nom}</div>`).join('') || '<div class="nutri-item">-</div>'}
+        </div>
+        <div class="nutri-col">
+          <div class="nutri-title protect">PROTECTION</div>
+          <span class="nutri-emoji">🛡️</span>
+          ${catProtect.map(i => `<div class="nutri-item">${i.nom}</div>`).join('') || '<div class="nutri-item">-</div>'}
+        </div>
+      </div>
+
+      <div class="steps-container">
+        <h3 style="margin-bottom:12px;color:var(--vert);font-size:16px">ÉTAPES DE PRÉPARATION</h3>
+        ${(r.etapes || []).map((s, idx) => `
+          <div class="step-row">
+            <div class="step-icon">${getStepIcon(s)}</div>
+            <div class="step-text"><span>${idx + 1}.</span>${s}</div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+
+    ${part ? `<div class="card ok"><strong>📏 Part conseillée :</strong> ${part}</div>` : ''}
+    ${r.nutrition ? `<div class="card"><h3>📊 Apports (portion)</h3><p class="mu">${r.nutrition.kcal} kcal · ${r.nutrition.protG}g protéines · ${r.nutrition.ferMg}mg fer</p></div>` : ''}
     ${r.securite ? `<div class="card warn"><h3>⚠️ Précautions</h3><p class="mu">${r.securite}</p></div>` : ''}
-    ${r.source ? `<div class="card"><p class="mu"><strong>📚 Source :</strong> ${r.source}</p></div>` : ''}
-    ${renderFooter()}`;
+    
+    ${renderFooter()}
+  `;
 }
 
 /* ============================================================
